@@ -16,8 +16,7 @@
         "defaults",
         "meta",
         "reports",
-        "vars",
-        "temp"
+        "vars"
       ]
     },
     "edit_line": {
