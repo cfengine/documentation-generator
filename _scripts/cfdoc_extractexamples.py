@@ -30,25 +30,15 @@
 import os
 
 def run(config):
-	processDirectory(config["markdown_directory"], "", config)
-
-def processDirectory(cur_name,cur_dir, config):
-	if os.path.isdir(cur_name) == True:
-		markdownfiles = os.listdir(cur_name)	
-		for file_name in markdownfiles:
-			if os.path.isdir(cur_name+"/"+file_name) == True:
-				processDirectory(cur_name+"/"+file_name,cur_dir+"/"+file_name, config)
-			elif os.path.isdir(file_name) == False and ".markdown" in file_name:
-				processFile(cur_name+"/"+file_name, config)
+	markdown_files = config["markdown_files"]
+	for file in markdown_files:
+		processFile(file, config)
 
 def terminateBlock(lines):
 	if lines[-1] != '\n': lines += '\n'
 	lines += '```\n'
 	
-
 def processFile(markdown, config):
-	example_dir = config["example_directory"]
-
 	markdown_file = open(markdown, 'r')
 	markdown_lines = markdown_file.readlines()
 	markdown_file.close()
@@ -66,13 +56,17 @@ def processFile(markdown, config):
 	for line in markdown_lines:
 		keepline = True
 		# skip markdown codeblocks
-		if line[:3] == '```':
+		if line.lstrip()[:3] == '```':
 			in_pre = not in_pre
-		if not in_pre and line.find("[%") == 0:
+		if not in_pre and line.find("[%CFEngine_include(") == 0:
 			# out of previous example source, read next
 			if (example_idx == len(example_lines)):
-				example = line[2:line.find("%]")]
-				example_lines = readExample(example_dir + "/" + example)
+				parameters = line[line.find("(")+1:line.find(")%]")]
+				parameters = parameters.replace(" ", "")
+				parameters = parameters.split(",")
+				example = parameters[0]
+				example_lines = include(parameters, config)
+				example_idx = 0
 			
 			# write example until next stop marker [%-]
 			if len(example_lines) > example_idx:
@@ -98,6 +92,7 @@ def processFile(markdown, config):
 					new_markdown_lines.append("This policy can be found in ")
 					new_markdown_lines.append("`/var/cfengine/share/doc/examples/" + example + "`")
 					new_markdown_lines.append("\n")
+					example_idx = len(example_lines)
 					
 		if keepline == True:
 			# terminate code block
@@ -115,17 +110,24 @@ def processFile(markdown, config):
 		new_markdown_file.close()
 		os.rename(new_markdown_filename,markdown)
 			
-def readExample(example):
-	markdown_lines = []
-	
-	try:
-		example_file = open(example, 'r')
-	except:
-		print "cfdoc_extractexamples: File not found or can't open " + example
-		return markdown_lines
+def include(parameters, config):
+	lines = []
+	example_directories = config["example_directories"]
+	for example_directory in example_directories:
+		example = example_directory + "/" + parameters[0]
+		if os.path.exists(example):
+			example_file = open(example, 'r')
+			lines = example_file.readlines()
 		
-	lines = example_file.readlines()	
-	print "Injecting " + example
+	if len(lines) == 0:
+		print "cfdoc_extractexamples: File not found or can't open: " + parameters[0]
+		print "                       searching :"
+		for dir in example_directories:
+			print "                                  " + dir
+		return lines
+	
+		
+	markdown_lines = []
 	skip_block = True
 	for line in lines:
 		if skip_block == False:

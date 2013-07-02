@@ -26,25 +26,34 @@ import cfdoc_environment as environment
 import cfdoc_linkresolver as linkresolver
 import cfdoc_extractexamples as extractexamples
 import cfdoc_git as git
+import sys
 
 config = environment.validate()
+
 try:
 	git.createData(config)
 except:
 	print "cfdoc_preprocess: Fatal error generating git tags"
+	sys.stdout.write("       Exception: ")
+	print sys.exc_info()
 	exit(1)
 
 try:
-	linkresolver.processDirectory(config["markdown_directory"],config["reference_path"],"")
+	linkresolver.run(config)
 except:
 	print "cfdoc_preprocess: Fatal error generating link map"
+	sys.stdout.write("       Exception: ")
+	print sys.exc_info()
 	exit(2)
 
 try:
-	if (config["example_directory"] != ""):
-		extractexamples.run(config)
+	extractexamples.run(config)
 except:
-	print "cfdoc_preprocess: Fatal error extracting example code"
-	exit(3)
+	print "cfdoc_preprocess: Failure extracting example code"
+	sys.stdout.write("       Exception: ")
+	print sys.exc_info()
+
+# Final step: generate links to known targets
+linkresolver.apply(config)
 
 exit(0)

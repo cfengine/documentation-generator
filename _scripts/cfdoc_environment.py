@@ -24,30 +24,30 @@ import os
 
 def validate():
 	config = {}
-	config["reference_path"] = os.environ.get('CFDOC_LINKFILE')
-	if not os.path.exists(config["reference_path"]):
-		print "Path in 'CFDOC_LINKFILE' not found: " + config["reference_path"]
-	
-	config["markdown_directory"] = os.environ.get('CFDOC_DIRNAME')
-	if not os.path.exists(config["markdown_directory"]):
-		print "Path in 'CFDOC_DIRNAME' not found: " + config["markdown_directory"]
-
-	config["example_directory"] = os.environ.get('CFDOC_EXAMPLEPATH')
-	if not os.path.exists(config["example_directory"]):
-		print "Path in 'CFDOC_EXAMPLEPATH' not found: " + config["example_directory"]
-
-	if config["reference_path"] == None or config["markdown_directory"] == None:
-	
-		print 'Please set environment variables and retry. Example:'
-		print '> CFDOC_LINKFILE="/path/to/link/file"'
-		print '> export CFDOC_LINKFILE'
-		print '> CFDOC_DIRNAME="/path/to/doc/dir"'
-		print '> export CFDOC_DIRNAME'
-		print '> /path/to/this/script/cfdoc_createlinks.py'
+	config["WORKDIR"] = os.environ.get('WRKDIR')
+	if config["WORKDIR"] == None:
+		print 'Please set environment variable `WRKDIR` and retry.'
 		exit(1)
+
+	if not os.path.exists(config["WORKDIR"]):
+		print "Directory WORKDIR not found: " + config["WORKDIR"]
+		exit(2)
+		
+	config["project_directory"] = config["WORKDIR"] + "/documentation-generator"
+	if not os.path.exists(config["project_directory"]):
+		print "Directory 'documentation-generator' not found in WORKDIR"
 	
-	config["project_directory"] = os.path.dirname(config["reference_path"])
+	config["markdown_directory"] = config["WORKDIR"] + "/documentation"
+	if not os.path.exists(config["markdown_directory"]):
+		print "Directory 'documentation' not found in WORKDIR"
+
+	config["example_directories"] = []
+	config["example_directories"].append(config["WORKDIR"] + "/core/examples")
+	config["example_directories"].append(config["WORKDIR"] + "/core/masterfiles/libraries")
+		
+	config["reference_path"] = config["project_directory"] + "/_references.md"
 	config["config_path"] = config["project_directory"] + "/_config.yml"
+	
 	with open(config["config_path"], 'r') as config_file:
 		lines = config_file.readlines()
 		for line in lines:
@@ -63,9 +63,23 @@ def validate():
 			value = assign[1].lstrip().rstrip()
 			
 			config[key] = value
-	
+			
 	print 'cfdoc_environment: cwd              = ' + os.getcwd()
 	print '                   config           = '
 	print config
 		
+	
+	markdown_files = []
+	scanDirectory(config["markdown_directory"], "", ".markdown", markdown_files)
+	config["markdown_files"] = markdown_files
+	
 	return config
+
+def scanDirectory(cur_name, cur_dir, ext, file_list):
+	if os.path.isdir(cur_name) == True:
+		markdownfiles = os.listdir(cur_name)
+		for file_name in markdownfiles:
+			if os.path.isdir(cur_name+"/"+file_name) == True and file_name[0] != '.':
+				scanDirectory(cur_name+"/"+file_name,cur_dir+"/"+file_name, ext, file_list)
+			elif os.path.isdir(file_name) == False and file_name[-len(ext):] == ext:
+				file_list.append(cur_name + "/" + file_name)

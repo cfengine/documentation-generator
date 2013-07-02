@@ -21,36 +21,78 @@
 # THE SOFTWARE.
 
 import os
+import sys
 from os import listdir
 from os.path import isfile, join
 from string import ascii_letters, digits
 
-def processDirectory(cur_name,output_file,cur_dir):
-	if os.path.isdir(cur_name) == True:
-		markdownfiles = os.listdir(cur_name)	
-		for file_name in markdownfiles:
-			if os.path.isdir(cur_name+"/"+file_name) == True:
-				processDirectory(cur_name+"/"+file_name,output_file,cur_dir+"/"+file_name)
-			elif os.path.isdir(file_name) == False and ".markdown" in file_name:
-				addToLinkFile(cur_name+"/"+file_name,output_file,cur_dir)
+def run(config):
+	markdown_files =  config["markdown_files"]
+	readLinkFile(config)
+	for file in markdown_files:
+		parseMarkdownForAnchors(file, config)
 
-def addToLinkFile(file_name,output_file,cur_dir):
+def apply(config):
+	markdown_files =  config["markdown_files"]
+	for file in markdown_files:
+		applyLinkMap(file, config)
+
+def readLinkFile(config):
+	output_file = config["reference_path"]
+	link_map = config.get("link_map", dict())
+	
+	link_file = open(output_file, 'r')
+	link_lines = link_file.readlines()
+	for line in link_lines:
+		label = line[line.find('[') + 1:line.find(']')]
+		link_map["`" + label + "`"] = "[" + label + "]"
+	config["link_map"] = link_map
+
+def addLinkToMap(keyword, anchor, html, config):
+	link_map = config.get("link_map", dict())
+
+	# don't overwrite
+	if link_map.get(keyword) != None:
+		return
+		
+	link_map[keyword] = "[" + anchor + "]"
+	
+	output_file = config["reference_path"]
+	out_file = open(output_file, "a")
+	output_string = '[' + anchor + ']: ' + html
+	out_file.write(output_string+"\n")
+	out_file.close()
+	
+	config["link_map"] = link_map
+
+def parseMarkdownForAnchors(file_name, config):
+	linkMap = config.get("link_map", dict())
 	
 	in_file = open(file_name,"r")
 	lines = in_file.readlines()
 	in_file.close()
-
+	
+	output_file = config["reference_path"]
 	out_file = open(output_file, "a")
 	current_file_name = ""
 	current_file_label = ""
 	current_title = ""
 	header_list = []
 	
+	in_pre = False
 	for line in lines:
+		# ignore code blocks
+		if line.find("    ") == 0:
+			continue
+		elif line.find("```") == 0:
+			in_pre = not in_pre
+		if in_pre:
+			continue
+
 		if line.find("title:") == 0:
-			current_title = line.split('title: ')					
-			current_title = current_title[1].rstrip()
-			current_title = current_title.lstrip()
+			current_title = line.split('title: ')
+			current_title = current_title[1].rstrip().rstrip('\"')
+			current_title = current_title.lstrip().lstrip('\"')
 		elif line.find("alias:") == 0:
 			current_file_name = line.split('alias: ')
 			current_file_name = current_file_name[1].rstrip()
@@ -62,6 +104,9 @@ def addToLinkFile(file_name,output_file,cur_dir):
 
 	if current_file_label != "" and current_file_name != "":
 		output_string = '['+current_file_label+']: '+current_file_name+' \"'+current_title+'\"'
+		# keep dictionary reasonably short by including at most two-word headers
+		if current_file_label.count(" ") < 2:
+			linkMap["`" + current_file_label + "`"] = "[" + current_file_label + "]"
 		out_file.write(output_string+"\n")
 		for header in header_list:
 			if header == "":
@@ -75,9 +120,85 @@ def addToLinkFile(file_name,output_file,cur_dir):
 			anchor = anchor.replace("$", "-")
 			anchor = anchor.replace("(", "-")
 			anchor = anchor.replace(")", "-")
+			anchor = anchor.replace("\"", "")
 			anchor = anchor.replace("--", "-")
 			anchor = anchor.lstrip("-").rstrip("-")
-			output_string = '['+current_file_label+ '#' + header + ']: '
+			label = current_file_label+ '#' + header
+			# prefer top-level anchors
+			if header.count(" ") < 2 and not ("`" + header+ "`") in linkMap:
+				linkMap["`" + header+ "`"] = "[" + label + "]"
+			output_string = '['+ label + ']: '
 			output_string += current_file_name + '#' + anchor + ' '
 			output_string += '\"'+current_title + ' - ' + header + '\"'
 			out_file.write(output_string+"\n")
+	
+	config["link_map"] = linkMap
+
+def applyLinkMap(file_name, config):
+	markdown_file = open(file_name,"r")
+	markdown_lines = markdown_file.readlines()
+	markdown_file.close()
+	
+	link_map = config["link_map"]
+	
+	new_lines = []
+	write_changes = False
+	in_pre = False
+	current_section = ""
+	for markdown_line in markdown_lines:
+		new_line = ""
+		# we ignore everything in code blocks
+		if markdown_line[:4] == "    ":
+			new_lines.append(markdown_line)
+			continue
+		if markdown_line.lstrip()[:3] == '```':
+			in_pre = not in_pre
+			
+		# don't link to the current section
+		if markdown_line.find("title:") == 0:
+			current_section = markdown_line.split('title: ')
+			current_section = current_section[1].rstrip().rstrip('\"')
+			current_section = current_section.lstrip().lstrip('\"')
+			current_section = "`" + current_section + "`"
+		elif markdown_line.find("#") == 0:
+			current_section = "`" + markdown_line.lstrip('#').rstrip().lstrip() + "`"
+					
+		if not in_pre:
+			while True:
+				value = ""
+				bracket_depth = 0
+				index = -1
+				candidate_start = -1
+				i = 0
+				# ignore existing links, ie everything in brackets
+				while i < len(markdown_line):
+					if markdown_line[i] == '[': bracket_depth += 1
+					elif markdown_line[i] == ']': bracket_depth -= 1
+					elif bracket_depth == 0:
+						if markdown_line[i] == '`':
+							if candidate_start == -1:
+								candidate_start = i
+							else:
+								candidate = markdown_line[candidate_start:i+1]
+								value = link_map.get(candidate)
+								if not value == None and candidate != current_section:
+									index = candidate_start
+									break
+								candidate_start = -1
+					i += 1
+				if index != -1:
+					write_changes = True
+					new_line += markdown_line[:index]
+					new_line += "[" + candidate + "]" + value
+					markdown_line = markdown_line[index + len(candidate):]
+				else:
+					break
+		new_line += markdown_line
+		new_lines.append(new_line)
+			
+	if write_changes:
+		markdown_file = open(file_name + ".new", "w")
+		for new_line in new_lines:
+			markdown_file.write(new_line)
+		markdown_file.close()
+		os.rename(file_name + ".new", file_name)
