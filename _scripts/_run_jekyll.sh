@@ -1,8 +1,4 @@
 #!/bin/bash
-. `dirname "$0"`/functions
-
-export WRKDIR=$WORKDIR
-
 sed '/^\[.*\[.*\].*\]/d' $WRKDIR/documentation-generator/_references.md > $WRKDIR/documentation-generator/new_references.md
 mv $WRKDIR/documentation-generator/new_references.md $WRKDIR/documentation-generator/_references.md
 
