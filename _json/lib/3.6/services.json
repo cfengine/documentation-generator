@@ -1,3 +1,7 @@
+2013-08-14T16:38:24+0200    error: Couldn't find a private key at '/home/jenkins/.cfagent/ppkeys/localhost.priv', use cf-key to get one. (fopen: No such file or directory)
+2013-08-14T16:38:24+0200  warning: No public/private key pair is loaded, trying to reload
+2013-08-14T16:38:24+0200    error: Couldn't find a private key at '/home/jenkins/.cfagent/ppkeys/localhost.priv', use cf-key to get one. (fopen: No such file or directory)
+2013-08-14T16:38:24+0200    error: No public/private key pair found
 {
       "bundles": [
         {
@@ -1909,7 +1913,7 @@
                           "lval": "string",
                           "rval": {
                             "type": "string",
-                            "value": ".*auditd.*"
+                            "value": ".*auditd$"
                           }
                         }
                       ]
@@ -4716,10 +4720,80 @@
                     },
                     {
                       "line": 491,
-                      "promiser": "startcommand[rpcgssd]",
+                      "promiser": "startcommand[rhnsd]",
                       "attributes": [
                         {
                           "line": 491,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/service rhnsd start"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 492,
+                      "promiser": "restartcommand[rhnsd]",
+                      "attributes": [
+                        {
+                          "line": 492,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/service rhnsd restart"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 493,
+                      "promiser": "reloadcommand[rhnsd]",
+                      "attributes": [
+                        {
+                          "line": 493,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/service rhnsd reload"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 494,
+                      "promiser": "stopcommand[rhnsd]",
+                      "attributes": [
+                        {
+                          "line": 494,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/service rhnsd stop"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 495,
+                      "promiser": "pattern[rhnsd]",
+                      "attributes": [
+                        {
+                          "line": 495,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "rhnsd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 497,
+                      "promiser": "startcommand[rpcgssd]",
+                      "attributes": [
+                        {
+                          "line": 497,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4729,11 +4803,11 @@
                       ]
                     },
                     {
-                      "line": 492,
+                      "line": 498,
                       "promiser": "restartcommand[rpcgssd]",
                       "attributes": [
                         {
-                          "line": 492,
+                          "line": 498,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4743,11 +4817,11 @@
                       ]
                     },
                     {
-                      "line": 493,
+                      "line": 499,
                       "promiser": "reloadcommand[rpcgssd]",
                       "attributes": [
                         {
-                          "line": 493,
+                          "line": 499,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4757,11 +4831,11 @@
                       ]
                     },
                     {
-                      "line": 494,
+                      "line": 500,
                       "promiser": "stopcommand[rpcgssd]",
                       "attributes": [
                         {
-                          "line": 494,
+                          "line": 500,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4771,11 +4845,11 @@
                       ]
                     },
                     {
-                      "line": 495,
+                      "line": 501,
                       "promiser": "pattern[rpcgssd]",
                       "attributes": [
                         {
-                          "line": 495,
+                          "line": 501,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4785,11 +4859,11 @@
                       ]
                     },
                     {
-                      "line": 497,
+                      "line": 503,
                       "promiser": "startcommand[rpcidmapd]",
                       "attributes": [
                         {
-                          "line": 497,
+                          "line": 503,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4799,11 +4873,11 @@
                       ]
                     },
                     {
-                      "line": 498,
+                      "line": 504,
                       "promiser": "restartcommand[rpcidmapd]",
                       "attributes": [
                         {
-                          "line": 498,
+                          "line": 504,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4813,11 +4887,11 @@
                       ]
                     },
                     {
-                      "line": 499,
+                      "line": 505,
                       "promiser": "reloadcommand[rpcidmapd]",
                       "attributes": [
                         {
-                          "line": 499,
+                          "line": 505,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4827,11 +4901,11 @@
                       ]
                     },
                     {
-                      "line": 500,
+                      "line": 506,
                       "promiser": "stopcommand[rpcidmapd]",
                       "attributes": [
                         {
-                          "line": 500,
+                          "line": 506,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4841,11 +4915,11 @@
                       ]
                     },
                     {
-                      "line": 501,
+                      "line": 507,
                       "promiser": "pattern[rpcidmapd]",
                       "attributes": [
                         {
-                          "line": 501,
+                          "line": 507,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4855,11 +4929,11 @@
                       ]
                     },
                     {
-                      "line": 503,
+                      "line": 509,
                       "promiser": "startcommand[rpcsvcgssd]",
                       "attributes": [
                         {
-                          "line": 503,
+                          "line": 509,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4869,11 +4943,11 @@
                       ]
                     },
                     {
-                      "line": 504,
+                      "line": 510,
                       "promiser": "restartcommand[rpcsvcgssd]",
                       "attributes": [
                         {
-                          "line": 504,
+                          "line": 510,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4883,11 +4957,11 @@
                       ]
                     },
                     {
-                      "line": 505,
+                      "line": 511,
                       "promiser": "reloadcommand[rpcsvcgssd]",
                       "attributes": [
                         {
-                          "line": 505,
+                          "line": 511,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4897,11 +4971,11 @@
                       ]
                     },
                     {
-                      "line": 506,
+                      "line": 512,
                       "promiser": "stopcommand[rpcsvcgssd]",
                       "attributes": [
                         {
-                          "line": 506,
+                          "line": 512,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4911,11 +4985,11 @@
                       ]
                     },
                     {
-                      "line": 507,
+                      "line": 513,
                       "promiser": "pattern[rpcsvcgssd]",
                       "attributes": [
                         {
-                          "line": 507,
+                          "line": 513,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4925,11 +4999,11 @@
                       ]
                     },
                     {
-                      "line": 509,
+                      "line": 515,
                       "promiser": "startcommand[saslauthd]",
                       "attributes": [
                         {
-                          "line": 509,
+                          "line": 515,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4939,11 +5013,11 @@
                       ]
                     },
                     {
-                      "line": 510,
+                      "line": 516,
                       "promiser": "restartcommand[saslauthd]",
                       "attributes": [
                         {
-                          "line": 510,
+                          "line": 516,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4953,11 +5027,11 @@
                       ]
                     },
                     {
-                      "line": 511,
+                      "line": 517,
                       "promiser": "reloadcommand[saslauthd]",
                       "attributes": [
                         {
-                          "line": 511,
+                          "line": 517,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4967,11 +5041,11 @@
                       ]
                     },
                     {
-                      "line": 512,
+                      "line": 518,
                       "promiser": "stopcommand[saslauthd]",
                       "attributes": [
                         {
-                          "line": 512,
+                          "line": 518,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4981,11 +5055,11 @@
                       ]
                     },
                     {
-                      "line": 513,
+                      "line": 519,
                       "promiser": "pattern[saslauthd]",
                       "attributes": [
                         {
-                          "line": 513,
+                          "line": 519,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4995,11 +5069,11 @@
                       ]
                     },
                     {
-                      "line": 515,
+                      "line": 521,
                       "promiser": "startcommand[smartd]",
                       "attributes": [
                         {
-                          "line": 515,
+                          "line": 521,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5009,11 +5083,11 @@
                       ]
                     },
                     {
-                      "line": 516,
+                      "line": 522,
                       "promiser": "restartcommand[smartd]",
                       "attributes": [
                         {
-                          "line": 516,
+                          "line": 522,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5023,11 +5097,11 @@
                       ]
                     },
                     {
-                      "line": 517,
+                      "line": 523,
                       "promiser": "reloadcommand[smartd]",
                       "attributes": [
                         {
-                          "line": 517,
+                          "line": 523,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5037,11 +5111,11 @@
                       ]
                     },
                     {
-                      "line": 518,
+                      "line": 524,
                       "promiser": "stopcommand[smartd]",
                       "attributes": [
                         {
-                          "line": 518,
+                          "line": 524,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5051,11 +5125,11 @@
                       ]
                     },
                     {
-                      "line": 519,
+                      "line": 525,
                       "promiser": "pattern[smartd]",
                       "attributes": [
                         {
-                          "line": 519,
+                          "line": 525,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5065,11 +5139,81 @@
                       ]
                     },
                     {
-                      "line": 521,
+                      "line": 527,
+                      "promiser": "startcommand[snmpd]",
+                      "attributes": [
+                        {
+                          "line": 527,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/snmpd start"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 528,
+                      "promiser": "restartcommand[snmpd]",
+                      "attributes": [
+                        {
+                          "line": 528,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/service snmpd restart"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 529,
+                      "promiser": "reloadcommand[snmpd]",
+                      "attributes": [
+                        {
+                          "line": 529,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/service snmpd reload"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 530,
+                      "promiser": "stopcommand[snmpd]",
+                      "attributes": [
+                        {
+                          "line": 530,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/snmpd stop"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 531,
+                      "promiser": "pattern[snmpd]",
+                      "attributes": [
+                        {
+                          "line": 531,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/snmpd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 533,
                       "promiser": "startcommand[svnserve]",
                       "attributes": [
                         {
-                          "line": 521,
+                          "line": 533,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5079,11 +5223,11 @@
                       ]
                     },
                     {
-                      "line": 522,
+                      "line": 534,
                       "promiser": "restartcommand[svnserve]",
                       "attributes": [
                         {
-                          "line": 522,
+                          "line": 534,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5093,11 +5237,11 @@
                       ]
                     },
                     {
-                      "line": 523,
+                      "line": 535,
                       "promiser": "reloadcommand[svnserve]",
                       "attributes": [
                         {
-                          "line": 523,
+                          "line": 535,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5107,11 +5251,11 @@
                       ]
                     },
                     {
-                      "line": 524,
+                      "line": 536,
                       "promiser": "stopcommand[svnserve]",
                       "attributes": [
                         {
-                          "line": 524,
+                          "line": 536,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5121,11 +5265,11 @@
                       ]
                     },
                     {
-                      "line": 525,
+                      "line": 537,
                       "promiser": "pattern[svnserve]",
                       "attributes": [
                         {
-                          "line": 525,
+                          "line": 537,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5135,11 +5279,11 @@
                       ]
                     },
                     {
-                      "line": 527,
+                      "line": 539,
                       "promiser": "startcommand[syslog]",
                       "attributes": [
                         {
-                          "line": 527,
+                          "line": 539,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5149,11 +5293,11 @@
                       ]
                     },
                     {
-                      "line": 528,
+                      "line": 540,
                       "promiser": "restartcommand[syslog]",
                       "attributes": [
                         {
-                          "line": 528,
+                          "line": 540,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5163,11 +5307,11 @@
                       ]
                     },
                     {
-                      "line": 529,
+                      "line": 541,
                       "promiser": "reloadcommand[syslog]",
                       "attributes": [
                         {
-                          "line": 529,
+                          "line": 541,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5177,11 +5321,11 @@
                       ]
                     },
                     {
-                      "line": 530,
+                      "line": 542,
                       "promiser": "stopcommand[syslog]",
                       "attributes": [
                         {
-                          "line": 530,
+                          "line": 542,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5191,11 +5335,11 @@
                       ]
                     },
                     {
-                      "line": 531,
+                      "line": 543,
                       "promiser": "pattern[syslog]",
                       "attributes": [
                         {
-                          "line": 531,
+                          "line": 543,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5205,11 +5349,11 @@
                       ]
                     },
                     {
-                      "line": 533,
+                      "line": 545,
                       "promiser": "startcommand[tcsd]",
                       "attributes": [
                         {
-                          "line": 533,
+                          "line": 545,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5219,11 +5363,11 @@
                       ]
                     },
                     {
-                      "line": 534,
+                      "line": 546,
                       "promiser": "restartcommand[tcsd]",
                       "attributes": [
                         {
-                          "line": 534,
+                          "line": 546,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5233,11 +5377,11 @@
                       ]
                     },
                     {
-                      "line": 535,
+                      "line": 547,
                       "promiser": "reloadcommand[tcsd]",
                       "attributes": [
                         {
-                          "line": 535,
+                          "line": 547,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5247,11 +5391,11 @@
                       ]
                     },
                     {
-                      "line": 536,
+                      "line": 548,
                       "promiser": "stopcommand[tcsd]",
                       "attributes": [
                         {
-                          "line": 536,
+                          "line": 548,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5261,11 +5405,11 @@
                       ]
                     },
                     {
-                      "line": 537,
+                      "line": 549,
                       "promiser": "pattern[tcsd]",
                       "attributes": [
                         {
-                          "line": 537,
+                          "line": 549,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5275,11 +5419,11 @@
                       ]
                     },
                     {
-                      "line": 539,
+                      "line": 551,
                       "promiser": "startcommand[www]",
                       "attributes": [
                         {
-                          "line": 539,
+                          "line": 551,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5289,11 +5433,11 @@
                       ]
                     },
                     {
-                      "line": 540,
+                      "line": 552,
                       "promiser": "restartcommand[www]",
                       "attributes": [
                         {
-                          "line": 540,
+                          "line": 552,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5303,11 +5447,11 @@
                       ]
                     },
                     {
-                      "line": 541,
+                      "line": 553,
                       "promiser": "reloadcommand[www]",
                       "attributes": [
                         {
-                          "line": 541,
+                          "line": 553,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5317,11 +5461,11 @@
                       ]
                     },
                     {
-                      "line": 542,
+                      "line": 554,
                       "promiser": "stopcommand[www]",
                       "attributes": [
                         {
-                          "line": 542,
+                          "line": 554,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5331,11 +5475,11 @@
                       ]
                     },
                     {
-                      "line": 543,
+                      "line": 555,
                       "promiser": "pattern[www]",
                       "attributes": [
                         {
-                          "line": 543,
+                          "line": 555,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5345,11 +5489,11 @@
                       ]
                     },
                     {
-                      "line": 545,
+                      "line": 557,
                       "promiser": "startcommand[xfs]",
                       "attributes": [
                         {
-                          "line": 545,
+                          "line": 557,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5359,11 +5503,11 @@
                       ]
                     },
                     {
-                      "line": 546,
+                      "line": 558,
                       "promiser": "restartcommand[xfs]",
                       "attributes": [
                         {
-                          "line": 546,
+                          "line": 558,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5373,11 +5517,11 @@
                       ]
                     },
                     {
-                      "line": 547,
+                      "line": 559,
                       "promiser": "reloadcommand[xfs]",
                       "attributes": [
                         {
-                          "line": 547,
+                          "line": 559,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5387,11 +5531,11 @@
                       ]
                     },
                     {
-                      "line": 548,
+                      "line": 560,
                       "promiser": "stopcommand[xfs]",
                       "attributes": [
                         {
-                          "line": 548,
+                          "line": 560,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5401,11 +5545,11 @@
                       ]
                     },
                     {
-                      "line": 549,
+                      "line": 561,
                       "promiser": "pattern[xfs]",
                       "attributes": [
                         {
-                          "line": 549,
+                          "line": 561,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5415,11 +5559,11 @@
                       ]
                     },
                     {
-                      "line": 551,
+                      "line": 563,
                       "promiser": "startcommand[ypbind]",
                       "attributes": [
                         {
-                          "line": 551,
+                          "line": 563,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5429,11 +5573,11 @@
                       ]
                     },
                     {
-                      "line": 552,
+                      "line": 564,
                       "promiser": "restartcommand[ypbind]",
                       "attributes": [
                         {
-                          "line": 552,
+                          "line": 564,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5443,11 +5587,11 @@
                       ]
                     },
                     {
-                      "line": 553,
+                      "line": 565,
                       "promiser": "reloadcommand[ypbind]",
                       "attributes": [
                         {
-                          "line": 553,
+                          "line": 565,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5457,11 +5601,11 @@
                       ]
                     },
                     {
-                      "line": 554,
+                      "line": 566,
                       "promiser": "stopcommand[ypbind]",
                       "attributes": [
                         {
-                          "line": 554,
+                          "line": 566,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5471,11 +5615,11 @@
                       ]
                     },
                     {
-                      "line": 555,
+                      "line": 567,
                       "promiser": "pattern[ypbind]",
                       "attributes": [
                         {
-                          "line": 555,
+                          "line": 567,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5485,11 +5629,11 @@
                       ]
                     },
                     {
-                      "line": 557,
+                      "line": 569,
                       "promiser": "startcommand[yum-updatesd]",
                       "attributes": [
                         {
-                          "line": 557,
+                          "line": 569,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5499,11 +5643,11 @@
                       ]
                     },
                     {
-                      "line": 558,
+                      "line": 570,
                       "promiser": "restartcommand[yum-updatesd]",
                       "attributes": [
                         {
-                          "line": 558,
+                          "line": 570,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5513,11 +5657,11 @@
                       ]
                     },
                     {
-                      "line": 559,
+                      "line": 571,
                       "promiser": "reloadcommand[yum-updatesd]",
                       "attributes": [
                         {
-                          "line": 559,
+                          "line": 571,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5527,11 +5671,11 @@
                       ]
                     },
                     {
-                      "line": 560,
+                      "line": 572,
                       "promiser": "stopcommand[yum-updatesd]",
                       "attributes": [
                         {
-                          "line": 560,
+                          "line": 572,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5541,11 +5685,11 @@
                       ]
                     },
                     {
-                      "line": 561,
+                      "line": 573,
                       "promiser": "pattern[yum-updatesd]",
                       "attributes": [
                         {
-                          "line": 561,
+                          "line": 573,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5555,11 +5699,11 @@
                       ]
                     },
                     {
-                      "line": 563,
+                      "line": 575,
                       "promiser": "startcommand[ssh]",
                       "attributes": [
                         {
-                          "line": 563,
+                          "line": 575,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5569,11 +5713,11 @@
                       ]
                     },
                     {
-                      "line": 564,
+                      "line": 576,
                       "promiser": "restartcommand[ssh]",
                       "attributes": [
                         {
-                          "line": 564,
+                          "line": 576,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5583,11 +5727,11 @@
                       ]
                     },
                     {
-                      "line": 565,
+                      "line": 577,
                       "promiser": "reloadcommand[ssh]",
                       "attributes": [
                         {
-                          "line": 565,
+                          "line": 577,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5597,11 +5741,11 @@
                       ]
                     },
                     {
-                      "line": 566,
+                      "line": 578,
                       "promiser": "stopcommand[ssh]",
                       "attributes": [
                         {
-                          "line": 566,
+                          "line": 578,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5611,15 +5755,85 @@
                       ]
                     },
                     {
-                      "line": 567,
+                      "line": 579,
                       "promiser": "pattern[ssh]",
                       "attributes": [
                         {
-                          "line": 567,
+                          "line": 579,
                           "lval": "string",
                           "rval": {
                             "type": "string",
                             "value": ".*sshd.*"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 581,
+                      "promiser": "startcommand[munin-node]",
+                      "attributes": [
+                        {
+                          "line": 581,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/munin-node start"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 582,
+                      "promiser": "restartcommand[munin-node]",
+                      "attributes": [
+                        {
+                          "line": 582,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/munin-node restart"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 583,
+                      "promiser": "reloadcommand[munin-node]",
+                      "attributes": [
+                        {
+                          "line": 583,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/munin-node reload"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 584,
+                      "promiser": "stopcommand[munin-node]",
+                      "attributes": [
+                        {
+                          "line": 584,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/munin-node stop"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 585,
+                      "promiser": "pattern[munin-node]",
+                      "attributes": [
+                        {
+                          "line": 585,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": ".*munin-node.*"
                           }
                         }
                       ]
@@ -5630,11 +5844,11 @@
                   "name": "debian|ubuntu",
                   "promises": [
                     {
-                      "line": 571,
+                      "line": 589,
                       "promiser": "startcommand[atd]",
                       "attributes": [
                         {
-                          "line": 571,
+                          "line": 589,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5644,11 +5858,11 @@
                       ]
                     },
                     {
-                      "line": 572,
+                      "line": 590,
                       "promiser": "restartcommand[atd]",
                       "attributes": [
                         {
-                          "line": 572,
+                          "line": 590,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5658,11 +5872,11 @@
                       ]
                     },
                     {
-                      "line": 573,
+                      "line": 591,
                       "promiser": "reloadcommand[atd]",
                       "attributes": [
                         {
-                          "line": 573,
+                          "line": 591,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5672,11 +5886,11 @@
                       ]
                     },
                     {
-                      "line": 574,
+                      "line": 592,
                       "promiser": "stopcommand[atd]",
                       "attributes": [
                         {
-                          "line": 574,
+                          "line": 592,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5686,11 +5900,11 @@
                       ]
                     },
                     {
-                      "line": 575,
+                      "line": 593,
                       "promiser": "pattern[atd]",
                       "attributes": [
                         {
-                          "line": 575,
+                          "line": 593,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5700,11 +5914,11 @@
                       ]
                     },
                     {
-                      "line": 577,
+                      "line": 595,
                       "promiser": "startcommand[bluetoothd]",
                       "attributes": [
                         {
-                          "line": 577,
+                          "line": 595,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5714,11 +5928,11 @@
                       ]
                     },
                     {
-                      "line": 578,
+                      "line": 596,
                       "promiser": "restartcommand[bluetoothd]",
                       "attributes": [
                         {
-                          "line": 578,
+                          "line": 596,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5728,11 +5942,11 @@
                       ]
                     },
                     {
-                      "line": 579,
+                      "line": 597,
                       "promiser": "reloadcommand[bluetoothd]",
                       "attributes": [
                         {
-                          "line": 579,
+                          "line": 597,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5742,11 +5956,11 @@
                       ]
                     },
                     {
-                      "line": 580,
+                      "line": 598,
                       "promiser": "stopcommand[bluetoothd]",
                       "attributes": [
                         {
-                          "line": 580,
+                          "line": 598,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5756,11 +5970,11 @@
                       ]
                     },
                     {
-                      "line": 581,
+                      "line": 599,
                       "promiser": "pattern[bluetoothd]",
                       "attributes": [
                         {
-                          "line": 581,
+                          "line": 599,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5770,11 +5984,11 @@
                       ]
                     },
                     {
-                      "line": 583,
+                      "line": 601,
                       "promiser": "startcommand[bootlogd]",
                       "attributes": [
                         {
-                          "line": 583,
+                          "line": 601,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5784,11 +5998,11 @@
                       ]
                     },
                     {
-                      "line": 584,
+                      "line": 602,
                       "promiser": "restartcommand[bootlogd]",
                       "attributes": [
                         {
-                          "line": 584,
+                          "line": 602,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5798,11 +6012,11 @@
                       ]
                     },
                     {
-                      "line": 585,
+                      "line": 603,
                       "promiser": "reloadcommand[bootlogd]",
                       "attributes": [
                         {
-                          "line": 585,
+                          "line": 603,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5812,11 +6026,11 @@
                       ]
                     },
                     {
-                      "line": 586,
+                      "line": 604,
                       "promiser": "stopcommand[bootlogd]",
                       "attributes": [
                         {
-                          "line": 586,
+                          "line": 604,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5826,11 +6040,11 @@
                       ]
                     },
                     {
-                      "line": 587,
+                      "line": 605,
                       "promiser": "pattern[bootlogd]",
                       "attributes": [
                         {
-                          "line": 587,
+                          "line": 605,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5840,11 +6054,11 @@
                       ]
                     },
                     {
-                      "line": 589,
+                      "line": 607,
                       "promiser": "startcommand[crond]",
                       "attributes": [
                         {
-                          "line": 589,
+                          "line": 607,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5854,11 +6068,11 @@
                       ]
                     },
                     {
-                      "line": 590,
+                      "line": 608,
                       "promiser": "restartcommand[crond]",
                       "attributes": [
                         {
-                          "line": 590,
+                          "line": 608,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5868,11 +6082,11 @@
                       ]
                     },
                     {
-                      "line": 591,
+                      "line": 609,
                       "promiser": "reloadcommand[crond]",
                       "attributes": [
                         {
-                          "line": 591,
+                          "line": 609,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5882,11 +6096,11 @@
                       ]
                     },
                     {
-                      "line": 592,
+                      "line": 610,
                       "promiser": "stopcommand[crond]",
                       "attributes": [
                         {
-                          "line": 592,
+                          "line": 610,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5896,11 +6110,11 @@
                       ]
                     },
                     {
-                      "line": 593,
+                      "line": 611,
                       "promiser": "pattern[crond]",
                       "attributes": [
                         {
-                          "line": 593,
+                          "line": 611,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5910,11 +6124,11 @@
                       ]
                     },
                     {
-                      "line": 595,
+                      "line": 613,
                       "promiser": "startcommand[kerneloops]",
                       "attributes": [
                         {
-                          "line": 595,
+                          "line": 613,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5924,11 +6138,11 @@
                       ]
                     },
                     {
-                      "line": 596,
+                      "line": 614,
                       "promiser": "restartcommand[kerneloops]",
                       "attributes": [
                         {
-                          "line": 596,
+                          "line": 614,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5938,11 +6152,11 @@
                       ]
                     },
                     {
-                      "line": 597,
+                      "line": 615,
                       "promiser": "reloadcommand[kerneloops]",
                       "attributes": [
                         {
-                          "line": 597,
+                          "line": 615,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5952,11 +6166,11 @@
                       ]
                     },
                     {
-                      "line": 598,
+                      "line": 616,
                       "promiser": "stopcommand[kerneloops]",
                       "attributes": [
                         {
-                          "line": 598,
+                          "line": 616,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5966,11 +6180,11 @@
                       ]
                     },
                     {
-                      "line": 599,
+                      "line": 617,
                       "promiser": "pattern[kerneloops]",
                       "attributes": [
                         {
-                          "line": 599,
+                          "line": 617,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5980,11 +6194,11 @@
                       ]
                     },
                     {
-                      "line": 601,
+                      "line": 619,
                       "promiser": "startcommand[mysql]",
                       "attributes": [
                         {
-                          "line": 601,
+                          "line": 619,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -5994,11 +6208,11 @@
                       ]
                     },
                     {
-                      "line": 602,
+                      "line": 620,
                       "promiser": "restartcommand[mysql]",
                       "attributes": [
                         {
-                          "line": 602,
+                          "line": 620,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6008,11 +6222,11 @@
                       ]
                     },
                     {
-                      "line": 603,
+                      "line": 621,
                       "promiser": "reloadcommand[mysql]",
                       "attributes": [
                         {
-                          "line": 603,
+                          "line": 621,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6022,11 +6236,11 @@
                       ]
                     },
                     {
-                      "line": 604,
+                      "line": 622,
                       "promiser": "stopcommand[mysql]",
                       "attributes": [
                         {
-                          "line": 604,
+                          "line": 622,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6036,11 +6250,11 @@
                       ]
                     },
                     {
-                      "line": 605,
+                      "line": 623,
                       "promiser": "pattern[mysql]",
                       "attributes": [
                         {
-                          "line": 605,
+                          "line": 623,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6050,11 +6264,11 @@
                       ]
                     },
                     {
-                      "line": 607,
+                      "line": 625,
                       "promiser": "startcommand[ntpd]",
                       "attributes": [
                         {
-                          "line": 607,
+                          "line": 625,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6064,11 +6278,11 @@
                       ]
                     },
                     {
-                      "line": 608,
+                      "line": 626,
                       "promiser": "restartcommand[ntpd]",
                       "attributes": [
                         {
-                          "line": 608,
+                          "line": 626,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6078,11 +6292,11 @@
                       ]
                     },
                     {
-                      "line": 609,
+                      "line": 627,
                       "promiser": "reloadcommand[ntpd]",
                       "attributes": [
                         {
-                          "line": 609,
+                          "line": 627,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6092,11 +6306,11 @@
                       ]
                     },
                     {
-                      "line": 610,
+                      "line": 628,
                       "promiser": "stopcommand[ntpd]",
                       "attributes": [
                         {
-                          "line": 610,
+                          "line": 628,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6106,11 +6320,11 @@
                       ]
                     },
                     {
-                      "line": 611,
+                      "line": 629,
                       "promiser": "pattern[ntpd]",
                       "attributes": [
                         {
-                          "line": 611,
+                          "line": 629,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6120,11 +6334,11 @@
                       ]
                     },
                     {
-                      "line": 613,
+                      "line": 631,
                       "promiser": "startcommand[NetworkManager]",
                       "attributes": [
                         {
-                          "line": 613,
+                          "line": 631,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6134,11 +6348,11 @@
                       ]
                     },
                     {
-                      "line": 614,
+                      "line": 632,
                       "promiser": "restartcommand[NetworkManager]",
                       "attributes": [
                         {
-                          "line": 614,
+                          "line": 632,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6148,11 +6362,11 @@
                       ]
                     },
                     {
-                      "line": 615,
+                      "line": 633,
                       "promiser": "reloadcommand[NetworkManager]",
                       "attributes": [
                         {
-                          "line": 615,
+                          "line": 633,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6162,11 +6376,11 @@
                       ]
                     },
                     {
-                      "line": 616,
+                      "line": 634,
                       "promiser": "stopcommand[NetworkManager]",
                       "attributes": [
                         {
-                          "line": 616,
+                          "line": 634,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6176,11 +6390,11 @@
                       ]
                     },
                     {
-                      "line": 617,
+                      "line": 635,
                       "promiser": "pattern[NetworkManager]",
                       "attributes": [
                         {
-                          "line": 617,
+                          "line": 635,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6190,11 +6404,11 @@
                       ]
                     },
                     {
-                      "line": 619,
+                      "line": 637,
                       "promiser": "startcommand[ondemand]",
                       "attributes": [
                         {
-                          "line": 619,
+                          "line": 637,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6204,11 +6418,11 @@
                       ]
                     },
                     {
-                      "line": 620,
+                      "line": 638,
                       "promiser": "restartcommand[ondemand]",
                       "attributes": [
                         {
-                          "line": 620,
+                          "line": 638,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6218,11 +6432,11 @@
                       ]
                     },
                     {
-                      "line": 621,
+                      "line": 639,
                       "promiser": "reloadcommand[ondemand]",
                       "attributes": [
                         {
-                          "line": 621,
+                          "line": 639,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6232,11 +6446,11 @@
                       ]
                     },
                     {
-                      "line": 622,
+                      "line": 640,
                       "promiser": "stopcommand[ondemand]",
                       "attributes": [
                         {
-                          "line": 622,
+                          "line": 640,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6246,11 +6460,11 @@
                       ]
                     },
                     {
-                      "line": 623,
+                      "line": 641,
                       "promiser": "pattern[ondemand]",
                       "attributes": [
                         {
-                          "line": 623,
+                          "line": 641,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6260,11 +6474,11 @@
                       ]
                     },
                     {
-                      "line": 625,
+                      "line": 643,
                       "promiser": "startcommand[plymouth]",
                       "attributes": [
                         {
-                          "line": 625,
+                          "line": 643,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6274,11 +6488,11 @@
                       ]
                     },
                     {
-                      "line": 626,
+                      "line": 644,
                       "promiser": "restartcommand[plymouth]",
                       "attributes": [
                         {
-                          "line": 626,
+                          "line": 644,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6288,11 +6502,11 @@
                       ]
                     },
                     {
-                      "line": 627,
+                      "line": 645,
                       "promiser": "reloadcommand[plymouth]",
                       "attributes": [
                         {
-                          "line": 627,
+                          "line": 645,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6302,11 +6516,11 @@
                       ]
                     },
                     {
-                      "line": 628,
+                      "line": 646,
                       "promiser": "stopcommand[plymouth]",
                       "attributes": [
                         {
-                          "line": 628,
+                          "line": 646,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6316,11 +6530,11 @@
                       ]
                     },
                     {
-                      "line": 629,
+                      "line": 647,
                       "promiser": "pattern[plymouth]",
                       "attributes": [
                         {
-                          "line": 629,
+                          "line": 647,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6330,11 +6544,11 @@
                       ]
                     },
                     {
-                      "line": 631,
+                      "line": 649,
                       "promiser": "startcommand[postgresql84]",
                       "attributes": [
                         {
-                          "line": 631,
+                          "line": 649,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6344,11 +6558,11 @@
                       ]
                     },
                     {
-                      "line": 632,
+                      "line": 650,
                       "promiser": "restartcommand[postgresql84]",
                       "attributes": [
                         {
-                          "line": 632,
+                          "line": 650,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6358,11 +6572,11 @@
                       ]
                     },
                     {
-                      "line": 633,
+                      "line": 651,
                       "promiser": "reloadcommand[postgresql84]",
                       "attributes": [
                         {
-                          "line": 633,
+                          "line": 651,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6372,11 +6586,11 @@
                       ]
                     },
                     {
-                      "line": 634,
+                      "line": 652,
                       "promiser": "stopcommand[postgresql84]",
                       "attributes": [
                         {
-                          "line": 634,
+                          "line": 652,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6386,11 +6600,11 @@
                       ]
                     },
                     {
-                      "line": 635,
+                      "line": 653,
                       "promiser": "pattern[postgresql84]",
                       "attributes": [
                         {
-                          "line": 635,
+                          "line": 653,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6400,11 +6614,11 @@
                       ]
                     },
                     {
-                      "line": 637,
+                      "line": 655,
                       "promiser": "startcommand[postgresql91]",
                       "attributes": [
                         {
-                          "line": 637,
+                          "line": 655,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6414,11 +6628,11 @@
                       ]
                     },
                     {
-                      "line": 638,
+                      "line": 656,
                       "promiser": "restartcommand[postgresql91]",
                       "attributes": [
                         {
-                          "line": 638,
+                          "line": 656,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6428,11 +6642,11 @@
                       ]
                     },
                     {
-                      "line": 639,
+                      "line": 657,
                       "promiser": "reloadcommand[postgresql91]",
                       "attributes": [
                         {
-                          "line": 639,
+                          "line": 657,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6442,11 +6656,11 @@
                       ]
                     },
                     {
-                      "line": 640,
+                      "line": 658,
                       "promiser": "stopcommand[postgresql91]",
                       "attributes": [
                         {
-                          "line": 640,
+                          "line": 658,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6456,11 +6670,11 @@
                       ]
                     },
                     {
-                      "line": 641,
+                      "line": 659,
                       "promiser": "pattern[postgresql91]",
                       "attributes": [
                         {
-                          "line": 641,
+                          "line": 659,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6470,11 +6684,11 @@
                       ]
                     },
                     {
-                      "line": 643,
+                      "line": 661,
                       "promiser": "startcommand[saned]",
                       "attributes": [
                         {
-                          "line": 643,
+                          "line": 661,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6484,11 +6698,11 @@
                       ]
                     },
                     {
-                      "line": 644,
+                      "line": 662,
                       "promiser": "restartcommand[saned]",
                       "attributes": [
                         {
-                          "line": 644,
+                          "line": 662,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6498,11 +6712,11 @@
                       ]
                     },
                     {
-                      "line": 645,
+                      "line": 663,
                       "promiser": "reloadcommand[saned]",
                       "attributes": [
                         {
-                          "line": 645,
+                          "line": 663,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6512,11 +6726,11 @@
                       ]
                     },
                     {
-                      "line": 646,
+                      "line": 664,
                       "promiser": "stopcommand[saned]",
                       "attributes": [
                         {
-                          "line": 646,
+                          "line": 664,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6526,11 +6740,11 @@
                       ]
                     },
                     {
-                      "line": 647,
+                      "line": 665,
                       "promiser": "pattern[saned]",
                       "attributes": [
                         {
-                          "line": 647,
+                          "line": 665,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6540,11 +6754,11 @@
                       ]
                     },
                     {
-                      "line": 649,
+                      "line": 667,
                       "promiser": "startcommand[udev]",
                       "attributes": [
                         {
-                          "line": 649,
+                          "line": 667,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6554,11 +6768,11 @@
                       ]
                     },
                     {
-                      "line": 650,
+                      "line": 668,
                       "promiser": "restartcommand[udev]",
                       "attributes": [
                         {
-                          "line": 650,
+                          "line": 668,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6568,11 +6782,11 @@
                       ]
                     },
                     {
-                      "line": 651,
+                      "line": 669,
                       "promiser": "reloadcommand[udev]",
                       "attributes": [
                         {
-                          "line": 651,
+                          "line": 669,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6582,11 +6796,11 @@
                       ]
                     },
                     {
-                      "line": 652,
+                      "line": 670,
                       "promiser": "stopcommand[udev]",
                       "attributes": [
                         {
-                          "line": 652,
+                          "line": 670,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6596,11 +6810,11 @@
                       ]
                     },
                     {
-                      "line": 653,
+                      "line": 671,
                       "promiser": "pattern[udev]",
                       "attributes": [
                         {
-                          "line": 653,
+                          "line": 671,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6610,11 +6824,11 @@
                       ]
                     },
                     {
-                      "line": 655,
+                      "line": 673,
                       "promiser": "startcommand[udevmonitor]",
                       "attributes": [
                         {
-                          "line": 655,
+                          "line": 673,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6624,11 +6838,11 @@
                       ]
                     },
                     {
-                      "line": 656,
+                      "line": 674,
                       "promiser": "restartcommand[udevmonitor]",
                       "attributes": [
                         {
-                          "line": 656,
+                          "line": 674,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6638,11 +6852,11 @@
                       ]
                     },
                     {
-                      "line": 657,
+                      "line": 675,
                       "promiser": "reloadcommand[udevmonitor]",
                       "attributes": [
                         {
-                          "line": 657,
+                          "line": 675,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6652,11 +6866,11 @@
                       ]
                     },
                     {
-                      "line": 658,
+                      "line": 676,
                       "promiser": "stopcommand[udevmonitor]",
                       "attributes": [
                         {
-                          "line": 658,
+                          "line": 676,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6666,11 +6880,11 @@
                       ]
                     },
                     {
-                      "line": 659,
+                      "line": 677,
                       "promiser": "pattern[udevmonitor]",
                       "attributes": [
                         {
-                          "line": 659,
+                          "line": 677,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6680,11 +6894,11 @@
                       ]
                     },
                     {
-                      "line": 661,
+                      "line": 679,
                       "promiser": "startcommand[www]",
                       "attributes": [
                         {
-                          "line": 661,
+                          "line": 679,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6694,11 +6908,11 @@
                       ]
                     },
                     {
-                      "line": 662,
+                      "line": 680,
                       "promiser": "restartcommand[www]",
                       "attributes": [
                         {
-                          "line": 662,
+                          "line": 680,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6708,11 +6922,11 @@
                       ]
                     },
                     {
-                      "line": 663,
+                      "line": 681,
                       "promiser": "reloadcommand[www]",
                       "attributes": [
                         {
-                          "line": 663,
+                          "line": 681,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6722,11 +6936,11 @@
                       ]
                     },
                     {
-                      "line": 664,
+                      "line": 682,
                       "promiser": "stopcommand[www]",
                       "attributes": [
                         {
-                          "line": 664,
+                          "line": 682,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6736,11 +6950,11 @@
                       ]
                     },
                     {
-                      "line": 665,
+                      "line": 683,
                       "promiser": "pattern[www]",
                       "attributes": [
                         {
-                          "line": 665,
+                          "line": 683,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6750,11 +6964,11 @@
                       ]
                     },
                     {
-                      "line": 667,
+                      "line": 685,
                       "promiser": "startcommand[ssh]",
                       "attributes": [
                         {
-                          "line": 667,
+                          "line": 685,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6764,11 +6978,11 @@
                       ]
                     },
                     {
-                      "line": 668,
+                      "line": 686,
                       "promiser": "restartcommand[ssh]",
                       "attributes": [
                         {
-                          "line": 668,
+                          "line": 686,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6778,11 +6992,11 @@
                       ]
                     },
                     {
-                      "line": 669,
+                      "line": 687,
                       "promiser": "reloadcommand[ssh]",
                       "attributes": [
                         {
-                          "line": 669,
+                          "line": 687,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6792,11 +7006,11 @@
                       ]
                     },
                     {
-                      "line": 670,
+                      "line": 688,
                       "promiser": "stopcommand[ssh]",
                       "attributes": [
                         {
-                          "line": 670,
+                          "line": 688,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -6806,15 +7020,519 @@
                       ]
                     },
                     {
-                      "line": 671,
+                      "line": 689,
                       "promiser": "pattern[ssh]",
                       "attributes": [
                         {
-                          "line": 671,
+                          "line": 689,
                           "lval": "string",
                           "rval": {
                             "type": "string",
                             "value": ".*sshd.*"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 691,
+                      "promiser": "startcommand[snmpd]",
+                      "attributes": [
+                        {
+                          "line": 691,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/snmpd start"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 692,
+                      "promiser": "restartcommand[snmpd]",
+                      "attributes": [
+                        {
+                          "line": 692,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/snmpd restart"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 693,
+                      "promiser": "reloadcommand[snmpd]",
+                      "attributes": [
+                        {
+                          "line": 693,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/snmpd reload"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 694,
+                      "promiser": "stopcommand[snmpd]",
+                      "attributes": [
+                        {
+                          "line": 694,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/snmpd stop"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 695,
+                      "promiser": "pattern[snmpd]",
+                      "attributes": [
+                        {
+                          "line": 695,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/snmpd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 697,
+                      "promiser": "startcommand[pgbouncer]",
+                      "attributes": [
+                        {
+                          "line": 697,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/pgbouncer start"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 698,
+                      "promiser": "restartcommand[pgbouncer]",
+                      "attributes": [
+                        {
+                          "line": 698,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/pgbouncer restart"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 699,
+                      "promiser": "reloadcommand[pgbouncer]",
+                      "attributes": [
+                        {
+                          "line": 699,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/pgbouncer reload"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 700,
+                      "promiser": "stopcommand[pgbouncer]",
+                      "attributes": [
+                        {
+                          "line": 700,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/pgbouncer stop"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 701,
+                      "promiser": "pattern[pgbouncer]",
+                      "attributes": [
+                        {
+                          "line": 701,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": ".*pgbouncer.*"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 703,
+                      "promiser": "startcommand[supervisor]",
+                      "attributes": [
+                        {
+                          "line": 703,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/supervisor start"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 704,
+                      "promiser": "restartcommand[supervisor]",
+                      "attributes": [
+                        {
+                          "line": 704,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/supervisor restart"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 705,
+                      "promiser": "stopcommand[supervisor]",
+                      "attributes": [
+                        {
+                          "line": 705,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/supervisor stop"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 706,
+                      "promiser": "pattern[supervisor]",
+                      "attributes": [
+                        {
+                          "line": 706,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": ".*supervisord.*"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 708,
+                      "promiser": "startcommand[nrpe]",
+                      "attributes": [
+                        {
+                          "line": 708,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/nagios-nrpe-server start"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 709,
+                      "promiser": "restartcommand[nrpe]",
+                      "attributes": [
+                        {
+                          "line": 709,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/nagios-nrpe-server restart"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 710,
+                      "promiser": "reloadcommand[nrpe]",
+                      "attributes": [
+                        {
+                          "line": 710,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/nagios-nrpe-server reload"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 711,
+                      "promiser": "stopcommand[nrpe]",
+                      "attributes": [
+                        {
+                          "line": 711,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/nagios-nrpe-server stop"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 712,
+                      "promiser": "pattern[nrpe]",
+                      "attributes": [
+                        {
+                          "line": 712,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": ".*nrpe.*"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 714,
+                      "promiser": "startcommand[munin-node]",
+                      "attributes": [
+                        {
+                          "line": 714,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/munin-node start"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 715,
+                      "promiser": "restartcommand[munin-node]",
+                      "attributes": [
+                        {
+                          "line": 715,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/munin-node restart"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 716,
+                      "promiser": "reloadcommand[munin-node]",
+                      "attributes": [
+                        {
+                          "line": 716,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/munin-node reload"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 717,
+                      "promiser": "stopcommand[munin-node]",
+                      "attributes": [
+                        {
+                          "line": 717,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/munin-node stop"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 718,
+                      "promiser": "pattern[munin-node]",
+                      "attributes": [
+                        {
+                          "line": 718,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": ".*munin-node.*"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 720,
+                      "promiser": "startcommand[carbon-cache]",
+                      "attributes": [
+                        {
+                          "line": 720,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/carbon-cache start"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 721,
+                      "promiser": "restartcommand[carbon-cache]",
+                      "attributes": [
+                        {
+                          "line": 721,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/carbon-cache restart"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 722,
+                      "promiser": "stopcommand[carbon-cache]",
+                      "attributes": [
+                        {
+                          "line": 722,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/carbon-cache stop"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 723,
+                      "promiser": "pattern[carbon-cache]",
+                      "attributes": [
+                        {
+                          "line": 723,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": ".*carbon-cache.*"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 725,
+                      "promiser": "startcommand[cassandra]",
+                      "attributes": [
+                        {
+                          "line": 725,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/cassandra start"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 726,
+                      "promiser": "restartcommand[cassandra]",
+                      "attributes": [
+                        {
+                          "line": 726,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/cassandra restart"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 727,
+                      "promiser": "stopcommand[cassandra]",
+                      "attributes": [
+                        {
+                          "line": 727,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/cassandra stop"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 728,
+                      "promiser": "pattern[cassandra]",
+                      "attributes": [
+                        {
+                          "line": 728,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": ".*jsvc\\.exec.*apache-cassandra\\.jar.*"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 730,
+                      "promiser": "startcommand[omsa-dataeng]",
+                      "attributes": [
+                        {
+                          "line": 730,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/dataeng start"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 731,
+                      "promiser": "restartcommand[omsa-dataeng]",
+                      "attributes": [
+                        {
+                          "line": 731,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/dataeng restart"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 732,
+                      "promiser": "stopcommand[omsa-dataeng]",
+                      "attributes": [
+                        {
+                          "line": 732,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/init.d/dataeng stop"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 733,
+                      "promiser": "pattern[omsa-dataeng]",
+                      "attributes": [
+                        {
+                          "line": 733,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": ".*dsm_sa_datamgr.*"
                           }
                         }
                       ]
@@ -6824,18 +7542,18 @@
               ]
             },
             {
-              "line": 676,
+              "line": 738,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 678,
+                      "line": 740,
                       "promiser": "start",
                       "attributes": [
                         {
-                          "line": 678,
+                          "line": 740,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -6853,7 +7571,7 @@
                           }
                         },
                         {
-                          "line": 679,
+                          "line": 741,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -6863,11 +7581,11 @@
                       ]
                     },
                     {
-                      "line": 680,
+                      "line": 742,
                       "promiser": "restart",
                       "attributes": [
                         {
-                          "line": 680,
+                          "line": 742,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -6885,7 +7603,7 @@
                           }
                         },
                         {
-                          "line": 681,
+                          "line": 743,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -6895,11 +7613,11 @@
                       ]
                     },
                     {
-                      "line": 682,
+                      "line": 744,
                       "promiser": "reload",
                       "attributes": [
                         {
-                          "line": 682,
+                          "line": 744,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -6917,7 +7635,7 @@
                           }
                         },
                         {
-                          "line": 683,
+                          "line": 745,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -6927,11 +7645,11 @@
                       ]
                     },
                     {
-                      "line": 684,
+                      "line": 746,
                       "promiser": "stop",
                       "attributes": [
                         {
-                          "line": 684,
+                          "line": 746,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -6949,7 +7667,7 @@
                           }
                         },
                         {
-                          "line": 685,
+                          "line": 747,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -6963,21 +7681,21 @@
               ]
             },
             {
-              "line": 689,
+              "line": 751,
               "name": "processes",
               "contexts": [
                 {
                   "name": "start",
                   "promises": [
                     {
-                      "line": 693,
+                      "line": 755,
                       "promiser": "$(pattern[$(service)])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 695,
+                          "line": 757,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -6985,7 +7703,7 @@
                           }
                         },
                         {
-                          "line": 696,
+                          "line": 758,
                           "lval": "restart_class",
                           "rval": {
                             "type": "string",
@@ -7000,14 +7718,14 @@
                   "name": "stop",
                   "promises": [
                     {
-                      "line": 700,
+                      "line": 762,
                       "promiser": "$(pattern[$(service)])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 702,
+                          "line": 764,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -7015,7 +7733,7 @@
                           }
                         },
                         {
-                          "line": 703,
+                          "line": 765,
                           "lval": "process_stop",
                           "rval": {
                             "type": "string",
@@ -7023,7 +7741,7 @@
                           }
                         },
                         {
-                          "line": 704,
+                          "line": 766,
                           "lval": "signals",
                           "rval": {
                             "type": "list",
@@ -7046,21 +7764,21 @@
               ]
             },
             {
-              "line": 706,
+              "line": 768,
               "name": "commands",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 708,
+                      "line": 770,
                       "promiser": "$(startcommand[$(service)])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 710,
+                          "line": 772,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -7068,7 +7786,7 @@
                           }
                         },
                         {
-                          "line": 711,
+                          "line": 773,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -7089,14 +7807,14 @@
                   "name": "restart",
                   "promises": [
                     {
-                      "line": 714,
+                      "line": 776,
                       "promiser": "$(restartcommand[$(service)])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 716,
+                          "line": 778,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -7111,14 +7829,14 @@
                   "name": "reload",
                   "promises": [
                     {
-                      "line": 719,
+                      "line": 781,
                       "promiser": "$(reloadcommand[$(service)])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 721,
+                          "line": 783,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
