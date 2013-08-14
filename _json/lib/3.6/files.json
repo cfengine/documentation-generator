@@ -1,3 +1,15 @@
+2013-08-14T16:38:23+0200    error: Couldn't find a private key at '/home/jenkins/.cfagent/ppkeys/localhost.priv', use cf-key to get one. (fopen: No such file or directory)
+2013-08-14T16:38:23+0200  warning: No public/private key pair is loaded, trying to reload
+2013-08-14T16:38:23+0200    error: Couldn't find a private key at '/home/jenkins/.cfagent/ppkeys/localhost.priv', use cf-key to get one. (fopen: No such file or directory)
+2013-08-14T16:38:23+0200    error: No public/private key pair found
+2013-08-14T16:38:23+0200    error: Apparent body "warn_only()" was undeclared, but used in a promise near line 152 of ../core/masterfiles/lib/3.6/files.cf (possible unquoted literal value)
+2013-08-14T16:38:23+0200    error: No such FnCall "if_ok()" in promise @ ../core/masterfiles/lib/3.6/files.cf near line 327
+2013-08-14T16:38:23+0200    error: No such FnCall "if_ok()" in promise @ ../core/masterfiles/lib/3.6/files.cf near line 402
+2013-08-14T16:38:23+0200    error: No such FnCall "if_ok()" in promise @ ../core/masterfiles/lib/3.6/files.cf near line 447
+2013-08-14T16:38:23+0200    error: No such FnCall "if_ok()" in promise @ ../core/masterfiles/lib/3.6/files.cf near line 487
+2013-08-14T16:38:23+0200    error: No such FnCall "always()" in promise @ ../core/masterfiles/lib/3.6/files.cf near line 519
+2013-08-14T16:38:23+0200    error: No such FnCall "always()" in promise @ ../core/masterfiles/lib/3.6/files.cf near line 550
+2013-08-14T16:38:23+0200    error: No such FnCall "always()" in promise @ ../core/masterfiles/lib/3.6/files.cf near line 731
 {
       "bundles": [
         {
