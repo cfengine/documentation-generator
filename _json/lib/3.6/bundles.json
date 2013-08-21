@@ -1,3 +1,18 @@
+2013-08-21T00:37:56+0200    error: Couldn't find a private key at '/home/jenkins/.cfagent/ppkeys/localhost.priv', use cf-key to get one. (fopen: No such file or directory)
+2013-08-21T00:37:56+0200  warning: No public/private key pair is loaded, trying to reload
+2013-08-21T00:37:56+0200    error: Couldn't find a private key at '/home/jenkins/.cfagent/ppkeys/localhost.priv', use cf-key to get one. (fopen: No such file or directory)
+2013-08-21T00:37:56+0200    error: No public/private key pair found
+2013-08-21T00:37:56+0200    error: No such FnCall "mo()" in promise @ ../core/masterfiles/lib/3.6/bundles.cf near line 74
+2013-08-21T00:37:56+0200    error: No such FnCall "if_repaired()" in promise @ ../core/masterfiles/lib/3.6/bundles.cf near line 74
+2013-08-21T00:37:56+0200    error: Apparent body "all()" was undeclared, but used in a promise near line 99 of ../core/masterfiles/lib/3.6/bundles.cf (possible unquoted literal value)
+2013-08-21T00:37:56+0200    error: Apparent body "tidy()" was undeclared, but used in a promise near line 99 of ../core/masterfiles/lib/3.6/bundles.cf (possible unquoted literal value)
+2013-08-21T00:37:56+0200    error: No such FnCall "recurse_with_base()" in promise @ ../core/masterfiles/lib/3.6/bundles.cf near line 99
+2013-08-21T00:37:56+0200    error: Apparent body "tidy()" was undeclared, but used in a promise near line 105 of ../core/masterfiles/lib/3.6/bundles.cf (possible unquoted literal value)
+2013-08-21T00:37:56+0200    error: No such FnCall "rotate()" in promise @ ../core/masterfiles/lib/3.6/bundles.cf near line 127
+2013-08-21T00:37:56+0200    error: No such FnCall "bigger_than()" in promise @ ../core/masterfiles/lib/3.6/bundles.cf near line 127
+2013-08-21T00:37:56+0200    error: Apparent body "tidy()" was undeclared, but used in a promise near line 140 of ../core/masterfiles/lib/3.6/bundles.cf (possible unquoted literal value)
+2013-08-21T00:37:56+0200    error: No such FnCall "filetype_older_than()" in promise @ ../core/masterfiles/lib/3.6/bundles.cf near line 140
+2013-08-21T00:37:56+0200    error: No such FnCall "recurse()" in promise @ ../core/masterfiles/lib/3.6/bundles.cf near line 140
 {
       "bundles": [
         {
@@ -407,6 +422,151 @@
                       "line": 117,
                       "promiser": "$(this.bundle): file $(f) has $(fields) = $(stat[$(f)][$(fields)])",
                       "attributes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/bundles.cf",
+          "line": 120,
+          "namespace": "default",
+          "name": "logrotate",
+          "bundleType": "agent",
+          "arguments": [
+            "log_files",
+            "max_size",
+            "rotate_levels"
+          ],
+          "promiseTypes": [
+            {
+              "line": 126,
+              "name": "files",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 127,
+                      "promiser": "$(log_files)",
+                      "attributes": [
+                        {
+                          "line": 128,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "Rotate file if above specified size"
+                          }
+                        },
+                        {
+                          "line": 129,
+                          "lval": "rename",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "rotate",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(rotate_levels)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 130,
+                          "lval": "file_select",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "bigger_than",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(max_size)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/bundles.cf",
+          "line": 133,
+          "namespace": "default",
+          "name": "prunedir",
+          "bundleType": "agent",
+          "arguments": [
+            "dir",
+            "max_days"
+          ],
+          "promiseTypes": [
+            {
+              "line": 139,
+              "name": "files",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 140,
+                      "promiser": "$(dir)",
+                      "attributes": [
+                        {
+                          "line": 141,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "Delete plain files inside directory older than max_days"
+                          }
+                        },
+                        {
+                          "line": 142,
+                          "lval": "delete",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "tidy"
+                          }
+                        },
+                        {
+                          "line": 143,
+                          "lval": "file_select",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "filetype_older_than",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "plain"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(max_days)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 144,
+                          "lval": "depth_search",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "recurse",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "1"
+                              }
+                            ]
+                          }
+                        }
+                      ]
                     }
                   ]
                 }
