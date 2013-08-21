@@ -1,3 +1,18 @@
+2013-08-21T00:37:56+0200    error: Couldn't find a private key at '/home/jenkins/.cfagent/ppkeys/localhost.priv', use cf-key to get one. (fopen: No such file or directory)
+2013-08-21T00:37:56+0200  warning: No public/private key pair is loaded, trying to reload
+2013-08-21T00:37:56+0200    error: Couldn't find a private key at '/home/jenkins/.cfagent/ppkeys/localhost.priv', use cf-key to get one. (fopen: No such file or directory)
+2013-08-21T00:37:56+0200    error: No public/private key pair found
+2013-08-21T00:37:56+0200    error: No such FnCall "mo()" in promise @ ../core/masterfiles/lib/3.6/bundles.cf near line 74
+2013-08-21T00:37:56+0200    error: No such FnCall "if_repaired()" in promise @ ../core/masterfiles/lib/3.6/bundles.cf near line 74
+2013-08-21T00:37:56+0200    error: Apparent body "all()" was undeclared, but used in a promise near line 99 of ../core/masterfiles/lib/3.6/bundles.cf (possible unquoted literal value)
+2013-08-21T00:37:56+0200    error: Apparent body "tidy()" was undeclared, but used in a promise near line 99 of ../core/masterfiles/lib/3.6/bundles.cf (possible unquoted literal value)
+2013-08-21T00:37:56+0200    error: No such FnCall "recurse_with_base()" in promise @ ../core/masterfiles/lib/3.6/bundles.cf near line 99
+2013-08-21T00:37:56+0200    error: Apparent body "tidy()" was undeclared, but used in a promise near line 105 of ../core/masterfiles/lib/3.6/bundles.cf (possible unquoted literal value)
+2013-08-21T00:37:56+0200    error: No such FnCall "rotate()" in promise @ ../core/masterfiles/lib/3.6/bundles.cf near line 127
+2013-08-21T00:37:56+0200    error: No such FnCall "bigger_than()" in promise @ ../core/masterfiles/lib/3.6/bundles.cf near line 127
+2013-08-21T00:37:56+0200    error: Apparent body "tidy()" was undeclared, but used in a promise near line 140 of ../core/masterfiles/lib/3.6/bundles.cf (possible unquoted literal value)
+2013-08-21T00:37:56+0200    error: No such FnCall "filetype_older_than()" in promise @ ../core/masterfiles/lib/3.6/bundles.cf near line 140
+2013-08-21T00:37:56+0200    error: No such FnCall "recurse()" in promise @ ../core/masterfiles/lib/3.6/bundles.cf near line 140
 {
       "bundles": [
         {
