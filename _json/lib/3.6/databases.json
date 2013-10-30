@@ -2,7 +2,7 @@
       "bundles": [],
       "bodies": [
         {
-          "sourcePath": "../masterfiles/lib/3.6/databases.cf",
+          "sourcePath": "../core/masterfiles/lib/3.6/databases.cf",
           "line": 54,
           "namespace": "default",
           "name": "local_mysql",
@@ -60,7 +60,7 @@
           ]
         },
         {
-          "sourcePath": "../masterfiles/lib/3.6/databases.cf",
+          "sourcePath": "../core/masterfiles/lib/3.6/databases.cf",
           "line": 65,
           "namespace": "default",
           "name": "local_postgresql",
