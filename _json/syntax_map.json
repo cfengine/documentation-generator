@@ -485,10 +485,10 @@
           "range": "-9.99999E100,9.99999E100",
           "visibility": "promiseType"
         },
-        "data": {
-          "attribute": "data",
+        "container": {
+          "attribute": "container",
           "status": "normal",
-          "type": "data",
+          "type": "container",
           "range": "",
           "visibility": "promiseType"
         },
@@ -932,7 +932,7 @@
         "template_data": {
           "attribute": "template_data",
           "status": "normal",
-          "type": "data",
+          "type": "container",
           "range": "",
           "visibility": "promiseType"
         },
@@ -4949,13 +4949,6 @@
           "range": ".*@.*",
           "visibility": "body"
         },
-        "mailsubject": {
-          "attribute": "mailsubject",
-          "status": "normal",
-          "type": "string",
-          "range": "",
-          "visibility": "body"
-        },
         "smtpserver": {
           "attribute": "smtpserver",
           "status": "normal",
@@ -5141,18 +5134,6 @@
       "variadic": true,
       "category": "data"
     },
-    "bundlesmatching": {
-      "status": "normal",
-      "returnType": "slist",
-      "parameters": [
-        {
-          "type": "string",
-          "range": ".*"
-        }
-      ],
-      "variadic": false,
-      "category": "data"
-    },
     "canonify": {
       "status": "normal",
       "returnType": "string",
@@ -5233,7 +5214,7 @@
           "range": ".*"
         }
       ],
-      "variadic": true,
+      "variadic": false,
       "category": "utils"
     },
     "countclassesmatching": {
@@ -6118,9 +6099,9 @@
       "variadic": false,
       "category": "data"
     },
-    "mergedata": {
+    "mergecontainer": {
       "status": "normal",
-      "returnType": "data",
+      "returnType": "container",
       "parameters": [],
       "variadic": true,
       "category": "data"
@@ -6249,7 +6230,7 @@
     },
     "parsejson": {
       "status": "normal",
-      "returnType": "data",
+      "returnType": "container",
       "parameters": [
         {
           "type": "string",
@@ -6521,7 +6502,7 @@
     },
     "readjson": {
       "status": "normal",
-      "returnType": "data",
+      "returnType": "container",
       "parameters": [
         {
           "type": "string",
@@ -7051,18 +7032,6 @@
       "variadic": false,
       "category": "data"
     },
-    "storejson": {
-      "status": "normal",
-      "returnType": "string",
-      "parameters": [
-        {
-          "type": "string",
-          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+"
-        }
-      ],
-      "variadic": false,
-      "category": "data"
-    },
     "strcmp": {
       "status": "normal",
       "returnType": "context",
@@ -7182,18 +7151,6 @@
       ],
       "variadic": false,
       "category": "system"
-    },
-    "variablesmatching": {
-      "status": "normal",
-      "returnType": "slist",
-      "parameters": [
-        {
-          "type": "string",
-          "range": ".*"
-        }
-      ],
-      "variadic": true,
-      "category": "utils"
     }
   }
 }
