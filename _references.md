@@ -37,3 +37,4 @@
 [body common]: reference-components.html#common-control
 [body file]: manuals-language-concepts-namespaces.html
 [vim_cf3]: https://github.com/neilhwatson/vim_cf3
+[enterprise software download page]: https://cfengine.com/software
