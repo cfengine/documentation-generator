@@ -1,3 +1,6 @@
+/default/cfe_internal_database_cleanup_reports/commands: Apparent bundle 'in_shell_and_silent' was undeclared, but used in a promise near line 153 of ../masterfiles/lib/3.6/cfe_internal.cf (possible unquoted literal value)
+/default/cfe_internal_database_cleanup_consumer_status/commands: Apparent bundle 'in_shell_and_silent' was undeclared, but used in a promise near line 168 of ../masterfiles/lib/3.6/cfe_internal.cf (possible unquoted literal value)
+/default/cfe_internal_database_cleanup_diagnostics/commands: Apparent bundle 'in_shell_and_silent' was undeclared, but used in a promise near line 182 of ../masterfiles/lib/3.6/cfe_internal.cf (possible unquoted literal value)
 {
       "bundles": [
         {
