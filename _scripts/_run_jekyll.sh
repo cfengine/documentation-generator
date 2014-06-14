@@ -6,7 +6,7 @@
 ## - only once pull request is merged
 cd /home/vagrant/documentation-generator
 git fetch original
-git reset --hard original/master
+git reset --hard original/3.6
 git clean -dfx
 cp -r /home/vagrant/_json /home/vagrant/documentation-generator
 cp /home/vagrant/doc_help/* /home/vagrant/documentation-generator/_generated
@@ -37,7 +37,7 @@ fi
 
 if [ ! -z "$DIFF" ]; then
    git push -f
-   /home/vagrant/bin/hub pull-request "Auto Pull Request" -b cfengine:master -h cfengine-autobuild:autocheckSyntaxMap
+   /home/vagrant/bin/hub pull-request "Auto Pull Request" -b cfengine:3.6 -h cfengine-autobuild:autocheckSyntaxMap
 fi
 cd /home/vagrant/documentation-generator
 
