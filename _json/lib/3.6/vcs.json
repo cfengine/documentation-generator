@@ -20,15 +20,11 @@
                       "promiser": "inputs",
                       "attributes": [
                         {
-                          "line": 56,
+                          "line": 55,
                           "lval": "slist",
                           "rval": {
                             "type": "list",
                             "value": [
-                              {
-                                "type": "string",
-                                "value": "$(this.promise_dirname)/common.cf"
-                              },
                               {
                                 "type": "string",
                                 "value": "$(this.promise_dirname)/paths.cf"
@@ -50,7 +46,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/vcs.cf",
-          "line": 65,
+          "line": 64,
           "namespace": "default",
           "name": "git_init",
           "bundleType": "agent",
@@ -59,18 +55,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 88,
+              "line": 87,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 89,
+                      "line": 88,
                       "promiser": "ok_norepo",
                       "attributes": [
                         {
-                          "line": 89,
+                          "line": 88,
                           "lval": "not",
                           "rval": {
                             "type": "functionCall",
@@ -90,18 +86,18 @@
               ]
             },
             {
-              "line": 91,
+              "line": 90,
               "name": "methods",
               "contexts": [
                 {
                   "name": "ok_norepo",
                   "promises": [
                     {
-                      "line": 93,
+                      "line": 92,
                       "promiser": "git_init",
                       "attributes": [
                         {
-                          "line": 93,
+                          "line": 92,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -132,7 +128,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/vcs.cf",
-          "line": 96,
+          "line": 95,
           "namespace": "default",
           "name": "git_add",
           "bundleType": "agent",
@@ -142,18 +138,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 116,
+              "line": 115,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 117,
+                      "line": 116,
                       "promiser": "ok_repo",
                       "attributes": [
                         {
-                          "line": 117,
+                          "line": 116,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -173,18 +169,18 @@
               ]
             },
             {
-              "line": 119,
+              "line": 118,
               "name": "methods",
               "contexts": [
                 {
                   "name": "ok_repo",
                   "promises": [
                     {
-                      "line": 121,
+                      "line": 120,
                       "promiser": "git_add",
                       "attributes": [
                         {
-                          "line": 121,
+                          "line": 120,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -215,7 +211,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/vcs.cf",
-          "line": 124,
+          "line": 123,
           "namespace": "default",
           "name": "git_checkout",
           "bundleType": "agent",
@@ -225,18 +221,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 144,
+              "line": 143,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 145,
+                      "line": 144,
                       "promiser": "ok_repo",
                       "attributes": [
                         {
-                          "line": 145,
+                          "line": 144,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -256,18 +252,18 @@
               ]
             },
             {
-              "line": 147,
+              "line": 146,
               "name": "methods",
               "contexts": [
                 {
                   "name": "ok_repo",
                   "promises": [
                     {
-                      "line": 149,
+                      "line": 148,
                       "promiser": "git_checkout",
                       "attributes": [
                         {
-                          "line": 149,
+                          "line": 148,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -298,7 +294,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/vcs.cf",
-          "line": 152,
+          "line": 151,
           "namespace": "default",
           "name": "git_checkout_new_branch",
           "bundleType": "agent",
@@ -308,18 +304,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 177,
+              "line": 176,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 178,
+                      "line": 177,
                       "promiser": "ok_repo",
                       "attributes": [
                         {
-                          "line": 178,
+                          "line": 177,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -339,18 +335,18 @@
               ]
             },
             {
-              "line": 180,
+              "line": 179,
               "name": "methods",
               "contexts": [
                 {
                   "name": "ok_repo",
                   "promises": [
                     {
-                      "line": 182,
+                      "line": 181,
                       "promiser": "git_checkout",
                       "attributes": [
                         {
-                          "line": 182,
+                          "line": 181,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -381,7 +377,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/vcs.cf",
-          "line": 185,
+          "line": 184,
           "namespace": "default",
           "name": "git_clean",
           "bundleType": "agent",
@@ -390,18 +386,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 198,
+              "line": 197,
               "name": "methods",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 199,
+                      "line": 198,
                       "promiser": "",
                       "attributes": [
                         {
-                          "line": 199,
+                          "line": 198,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -423,7 +419,7 @@
                           }
                         },
                         {
-                          "line": 202,
+                          "line": 201,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -440,7 +436,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/vcs.cf",
-          "line": 205,
+          "line": 204,
           "namespace": "default",
           "name": "git_stash",
           "bundleType": "agent",
@@ -450,18 +446,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 219,
+              "line": 218,
               "name": "methods",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 220,
+                      "line": 219,
                       "promiser": "",
                       "attributes": [
                         {
-                          "line": 220,
+                          "line": 219,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -483,7 +479,7 @@
                           }
                         },
                         {
-                          "line": 226,
+                          "line": 225,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -500,7 +496,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/vcs.cf",
-          "line": 229,
+          "line": 228,
           "namespace": "default",
           "name": "git_stash_and_clean",
           "bundleType": "agent",
@@ -509,18 +505,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 242,
+              "line": 241,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 243,
+                      "line": 242,
                       "promiser": "stash",
                       "attributes": [
                         {
-                          "line": 243,
+                          "line": 242,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -534,18 +530,18 @@
               ]
             },
             {
-              "line": 245,
+              "line": 244,
               "name": "methods",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 246,
+                      "line": 245,
                       "promiser": "",
                       "attributes": [
                         {
-                          "line": 246,
+                          "line": 245,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -563,7 +559,7 @@
                           }
                         },
                         {
-                          "line": 247,
+                          "line": 246,
                           "lval": "classes",
                           "rval": {
                             "type": "functionCall",
@@ -588,11 +584,11 @@
                   "name": "git_stash_ok",
                   "promises": [
                     {
-                      "line": 250,
+                      "line": 249,
                       "promiser": "",
                       "attributes": [
                         {
-                          "line": 250,
+                          "line": 249,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -612,14 +608,14 @@
               ]
             },
             {
-              "line": 252,
+              "line": 251,
               "name": "reports",
               "contexts": [
                 {
                   "name": "git_stash_not_ok",
                   "promises": [
                     {
-                      "line": 254,
+                      "line": 253,
                       "promiser": "$(this.bundle):: Warning: Not saving changes or cleaning. Git stash failed. Perhaps 'user.email' or 'user.name' is not set.",
                       "attributes": []
                     }
@@ -631,7 +627,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/vcs.cf",
-          "line": 257,
+          "line": 256,
           "namespace": "default",
           "name": "git_commit",
           "bundleType": "agent",
@@ -641,18 +637,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 277,
+              "line": 276,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 278,
+                      "line": 277,
                       "promiser": "ok_repo",
                       "attributes": [
                         {
-                          "line": 278,
+                          "line": 277,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -672,18 +668,18 @@
               ]
             },
             {
-              "line": 280,
+              "line": 279,
               "name": "methods",
               "contexts": [
                 {
                   "name": "ok_repo",
                   "promises": [
                     {
-                      "line": 282,
+                      "line": 281,
                       "promiser": "git_commit",
                       "attributes": [
                         {
-                          "line": 282,
+                          "line": 281,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -714,7 +710,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/vcs.cf",
-          "line": 285,
+          "line": 284,
           "namespace": "default",
           "name": "git",
           "bundleType": "agent",
@@ -725,18 +721,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 310,
+              "line": 309,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 311,
+                      "line": 310,
                       "promiser": "oneliner",
                       "attributes": [
                         {
-                          "line": 311,
+                          "line": 310,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -746,11 +742,11 @@
                       ]
                     },
                     {
-                      "line": 313,
+                      "line": 312,
                       "promiser": "repo_uid",
                       "attributes": [
                         {
-                          "line": 314,
+                          "line": 313,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -768,7 +764,7 @@
                           }
                         },
                         {
-                          "line": 316,
+                          "line": 315,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -778,11 +774,11 @@
                       ]
                     },
                     {
-                      "line": 318,
+                      "line": 317,
                       "promiser": "repo_gid",
                       "attributes": [
                         {
-                          "line": 319,
+                          "line": 318,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -800,7 +796,7 @@
                           }
                         },
                         {
-                          "line": 321,
+                          "line": 320,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -814,18 +810,18 @@
               ]
             },
             {
-              "line": 323,
+              "line": 322,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 324,
+                      "line": 323,
                       "promiser": "am_root",
                       "attributes": [
                         {
-                          "line": 324,
+                          "line": 323,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -845,11 +841,11 @@
                       ]
                     },
                     {
-                      "line": 325,
+                      "line": 324,
                       "promiser": "need_to_drop",
                       "attributes": [
                         {
-                          "line": 325,
+                          "line": 324,
                           "lval": "not",
                           "rval": {
                             "type": "functionCall",
@@ -873,18 +869,18 @@
               ]
             },
             {
-              "line": 327,
+              "line": 326,
               "name": "commands",
               "contexts": [
                 {
                   "name": "am_root.need_to_drop",
                   "promises": [
                     {
-                      "line": 329,
+                      "line": 328,
                       "promiser": "$(oneliner)",
                       "attributes": [
                         {
-                          "line": 330,
+                          "line": 329,
                           "lval": "args",
                           "rval": {
                             "type": "string",
@@ -892,15 +888,7 @@
                           }
                         },
                         {
-                          "line": 331,
-                          "lval": "classes",
-                          "rval": {
-                            "type": "symbol",
-                            "value": "kept_successful_command"
-                          }
-                        },
-                        {
-                          "line": 332,
+                          "line": 330,
                           "lval": "contain",
                           "rval": {
                             "type": "functionCall",
@@ -929,11 +917,11 @@
                   "name": "!am_root|!need_to_drop",
                   "promises": [
                     {
-                      "line": 335,
+                      "line": 333,
                       "promiser": "$(oneliner)",
                       "attributes": [
                         {
-                          "line": 336,
+                          "line": 334,
                           "lval": "args",
                           "rval": {
                             "type": "string",
@@ -941,15 +929,7 @@
                           }
                         },
                         {
-                          "line": 337,
-                          "lval": "classes",
-                          "rval": {
-                            "type": "symbol",
-                            "value": "kept_successful_command"
-                          }
-                        },
-                        {
-                          "line": 338,
+                          "line": 335,
                           "lval": "contain",
                           "rval": {
                             "type": "functionCall",
@@ -969,14 +949,14 @@
               ]
             },
             {
-              "line": 340,
+              "line": 337,
               "name": "reports",
               "contexts": [
                 {
                   "name": "inform_mode.am_root.need_to_drop",
                   "promises": [
                     {
-                      "line": 342,
+                      "line": 339,
                       "promiser": "$(this.bundle): with dropped privileges to uid '$(repo_uid)' and gid '$(repo_gid)', in directory '$(repo_path)', running Git command '$(oneliner) $(subcmd) $(args)'",
                       "attributes": []
                     }
@@ -986,7 +966,7 @@
                   "name": "inform_mode.(!am_root|!need_to_drop)",
                   "promises": [
                     {
-                      "line": 345,
+                      "line": 342,
                       "promiser": "$(this.bundle): with current privileges, in directory '$(repo_path)', running Git command '$(oneliner) $(subcmd) $(args)'",
                       "attributes": []
                     }
@@ -1000,7 +980,7 @@
       "bodies": [
         {
           "sourcePath": "../masterfiles/lib/3.6/vcs.cf",
-          "line": 59,
+          "line": 58,
           "namespace": "default",
           "name": "control",
           "bodyType": "file",
@@ -1010,7 +990,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 62,
+                  "line": 61,
                   "lval": "inputs",
                   "rval": {
                     "type": "list",
