@@ -35,10 +35,10 @@ if [ ! -z "$HELP_DIFF" ]; then
    git commit -m "Autocommit: help text changed `date +%F-%T`"
 fi
 
-if [ ! -z "$DIFF" ]; then
-   git push -f
-   /home/vagrant/bin/hub pull-request "Auto Pull Request" -b cfengine:3.6 -h cfengine-autobuild:autocheckSyntaxMap-3.6
-fi
+# if [ ! -z "$DIFF" ]; then
+#    git push -f
+#    /home/vagrant/bin/hub pull-request "Auto Pull Request" -b cfengine:3.6 -h cfengine-autobuild:autocheckSyntaxMap-3.6
+# fi
 cd /home/vagrant/documentation-generator
 
 
