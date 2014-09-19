@@ -135,10 +135,10 @@ def addLinkToSource(file_name,config):
 		line = line.replace("\">markdown source</a>]", source_file + "\">markdown source</a>]")
 		if unresolved_link.search(line) != None:
 			print "Unresolved link in '%s', html-line '%s'\n" % (file_name, line)
-			error_count += 1
+#			error_count += 1
 		if unexpanded_macro.search(line) != None:
 			print "Unexpanded macro in '%s', html-line '%s'\n" % (file_name, line)
-			error_count += 1
+#			error_count += 1
 		out_file.write(line)
 	out_file.close()
 	
