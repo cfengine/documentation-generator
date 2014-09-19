@@ -462,7 +462,7 @@
           "attribute": "int",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "promiseType"
         },
         "real": {
@@ -483,7 +483,7 @@
           "attribute": "ilist",
           "status": "normal",
           "type": "ilist",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "promiseType"
         },
         "rlist": {
@@ -2498,7 +2498,7 @@
           "attribute": "uid",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "promiseType"
         },
         "password": {
@@ -3939,7 +3939,7 @@
           "attribute": "package_list_update_ifelapsed",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "body"
         },
         "package_list_version_regex": {
@@ -3974,7 +3974,7 @@
           "attribute": "package_noverify_returncode",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "body"
         },
         "package_patch_arch_regex": {
@@ -5577,7 +5577,7 @@
       "parameters": [
         {
           "type": "string",
-          "range": "@[(][a-zA-Z0-9]+[)]"
+          "range": "@[(][a-zA-Z0-9_$(){}\\[\\].:]+[)]"
         }
       ],
       "variadic": false,
@@ -6020,11 +6020,11 @@
       "parameters": [
         {
           "type": "int",
-          "range": "-99999999999,9999999999"
+          "range": "-99999999999,99999999999"
         },
         {
           "type": "int",
-          "range": "-99999999999,9999999999"
+          "range": "-99999999999,99999999999"
         }
       ],
       "variadic": false,
@@ -6187,7 +6187,7 @@
       "parameters": [
         {
           "type": "int",
-          "range": "0,1000"
+          "range": "0,10000"
         },
         {
           "type": "int",
@@ -6458,23 +6458,23 @@
         },
         {
           "type": "int",
-          "range": "1,12"
+          "range": "0,1000"
         },
         {
           "type": "int",
-          "range": "1,31"
+          "range": "0,1000"
         },
         {
           "type": "int",
-          "range": "0,23"
+          "range": "0,1000"
         },
         {
           "type": "int",
-          "range": "0,59"
+          "range": "0,1000"
         },
         {
           "type": "int",
-          "range": "0,59"
+          "range": "0,1000"
         }
       ],
       "variadic": false,
@@ -6766,11 +6766,11 @@
       "parameters": [
         {
           "type": "int",
-          "range": "-99999999999,9999999999"
+          "range": "-99999999999,99999999999"
         },
         {
           "type": "int",
-          "range": "-99999999999,9999999999"
+          "range": "-99999999999,99999999999"
         }
       ],
       "variadic": false,
@@ -7150,7 +7150,7 @@
       "parameters": [
         {
           "type": "string",
-          "range": "@[(][a-zA-Z0-9]+[)]"
+          "range": "@[(][a-zA-Z0-9_$(){}\\[\\].:]+[)]"
         },
         {
           "type": "string",
@@ -7297,7 +7297,7 @@
       "parameters": [
         {
           "type": "string",
-          "range": "@[(][a-zA-Z0-9]+[)]"
+          "range": "@[(][a-zA-Z0-9_$(){}\\[\\].:]+[)]"
         },
         {
           "type": "string",
