@@ -1,6 +1,6 @@
 #!/bin/bash
 OUTDIR=$WRKDIR/documentation-generator/_generated
-mkdir -p $OUTDIR/lib/3.7
+mkdir -p $OUTDIR/lib/3.6
 $WRKDIR/core/cf-promises/cf-promises -sjson > $OUTDIR/syntax_map.json
 
 for lib in $WRKDIR/masterfiles/lib/3.6/*.cf
