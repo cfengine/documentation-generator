@@ -15,6 +15,7 @@ ENV LC_ALL C.UTF-8
 ENV WRKDIR /workdir
 ENV CORE_BRANCH master
 ENV DOC_BRANCH master
+ENV GIT_REMOTE cfengine
 
 # 0) All sorts of packages
 RUN apt-get update && apt-get install -y \
@@ -54,7 +55,7 @@ RUN make && make install
 
 # 1.2) clone and build CFEngine Core
 WORKDIR /workdir
-RUN git clone -b $CORE_BRANCH http://github.com/cfengine/core
+RUN git clone -b $CORE_BRANCH http://github.com/$GIT_REMOTE/core
 WORKDIR core
 RUN ["/bin/bash", "-c", "./autogen.sh --without-pam --with-lmdb=/usr/local"]
 RUN make
@@ -74,10 +75,10 @@ RUN gem install \
 
 # 3) Clone documentation content
 WORKDIR /workdir
-RUN git clone -b $DOC_BRANCH http://github.com/cfengine/documentation
-RUN git clone -b $DOC_BRANCH http://github.com/cfengine/documentation-generator
-RUN git clone -b $CORE_BRANCH http://github.com/cfengine/masterfiles
-RUN git clone -b $CORE_BRANCH http://github.com/cfengine/design-center
+RUN git clone -b $DOC_BRANCH http://github.com/$GIT_REMOTE/documentation
+RUN git clone -b $DOC_BRANCH http://github.com/$GIT_REMOTE/documentation-generator
+RUN git clone -b $CORE_BRANCH http://github.com/$GIT_REMOTE/masterfiles
+RUN git clone -b $CORE_BRANCH http://github.com/$GIT_REMOTE/design-center
 
 # patch jekyll to generate flat HTML file structure
 
