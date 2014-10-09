@@ -79,6 +79,10 @@ RUN git clone -b $DOC_BRANCH http://github.com/cfengine/documentation-generator
 RUN git clone -b $CORE_BRANCH http://github.com/cfengine/masterfiles
 RUN git clone -b $CORE_BRANCH http://github.com/cfengine/design-center
 
+# patch jekyll to generate flat HTML file structure
+
+RUN patch /var/lib/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/page.rb -i /workdir/documentation-generator/_setup/page.rb.patch
+
 #### END of base image ####
 
 # Instruct derived images to process documentation
