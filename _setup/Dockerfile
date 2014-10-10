@@ -66,6 +66,8 @@ RUN git clone -b $CORE_BRANCH http://github.com/$GIT_REMOTE/design-center
 # patch jekyll to generate flat HTML file structure
 
 RUN patch /var/lib/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/page.rb -i /workdir/documentation-generator/_setup/page.rb.patch
+COPY pygments_cfengine_lexer.py /usr/lib/python2.7/dist-packages/pygments/lexers/cfengine.py
+RUN ["/bin/bash", "-c", "cd /usr/lib/python2.7/dist-packages/pygments/lexers && python _mapping.py"]
 
 #### END of base image ####
 
