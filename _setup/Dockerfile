@@ -5,11 +5,8 @@ FROM vohi/dev:basic
 MAINTAINER Volker Hilsheimer <volker.hilsheimer@gmail.com>
 
 # 0) set environment variables
-# CORE_BRANCH and DOC_BRANCH can be set via "docker run -env CORE_BRANCH=3.6.x DOC_BRANCH=3.6"
 ENV WRKDIR /workdir
-ENV CORE_BRANCH master
-ENV DOC_BRANCH master
-ENV GIT_REMOTE cfengine
+WORKDIR /workdir
 
 # 1.1) Python and Ruby dependencies
 RUN ["/bin/bash", "-c", " \
@@ -47,46 +44,39 @@ RUN ["/bin/bash", "-c", " \
 # 3) CFEngine core incl source dependencies
 
 # 3.1) clone and build LMDB
-WORKDIR /workdir
-RUN git clone git://gitorious.org/mdb/mdb
-WORKDIR mdb/libraries/liblmdb
 # can't use --branch when cloning, since it's a tag
 RUN ["/bin/bash", "-c", " \
+    git clone git://gitorious.org/mdb/mdb && \
+    cd mdb/libraries/liblmdb && \
     git checkout LMDB_0.9.9 && \
     make && make install \
     "]
 
-# 3.2) clone and build CFEngine Core
-WORKDIR /workdir
-RUN git clone -b $CORE_BRANCH http://github.com/$GIT_REMOTE/core
-WORKDIR core
+# 3.2) clone and build CFEngine Core from upstream
 RUN ["/bin/bash", "-c", " \
+    git clone http://github.com/cfengine/core && \
+    cd core && \ 
     ./autogen.sh --without-pam --with-lmdb=/usr/local && \
     make && \
     cf-key/cf-key \
     "]
 
-# 4) Clone documentation content
-WORKDIR /workdir
-RUN ["/bin/bash", "-c", " \
-    git clone -b $DOC_BRANCH http://github.com/$GIT_REMOTE/documentation && \
-    git clone -b dockerfile http://github.com/vohi/documentation-generator && \
-    git clone -b $CORE_BRANCH http://github.com/$GIT_REMOTE/masterfiles && \
-    git clone -b $CORE_BRANCH http://github.com/$GIT_REMOTE/design-center \
-    "]
+# 4) Copy documentation-generator setup files into container
+#    Not pulling from git to make it easier to change those
+COPY _rebuild.sh /workdir/rebuild.sh
+COPY pygments_cfengine_lexer.py /usr/lib/python2.7/dist-packages/pygments/lexers/cfengine.py
+COPY page.rb.patch /tmp/page.rb.patch
 
 # patch jekyll to generate flat HTML file structure and install CFEngine lexer
 
 RUN ["/bin/bash", "-c", " \
-    patch /var/lib/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/page.rb -i /workdir/documentation-generator/_setup/page.rb.patch && \
-    cp /workdir/documentation-generator/_setup/pygments_cfengine_lexer.py /usr/lib/python2.7/dist-packages/pygments/lexers/cfengine.py && \
+    patch /var/lib/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/page.rb -i /tmp/page.rb.patch && \
     cd /usr/lib/python2.7/dist-packages/pygments/lexers && \
     python _mapping.py \
     "]
 
-#### END of base image ####
+# 5) Run rebuild script 
 
 # Instruct derived images to process documentation
-ONBUILD WORKDIR /workdir
-ONBUILD EXPOSE 8080
-ONBUILD ENTRYPOINT ["documentation-generator/_setup/_rebuild.sh"]
+EXPOSE 8080
+ENTRYPOINT ["./rebuild.sh"]
