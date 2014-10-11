@@ -5,15 +5,16 @@ RUN_JEKYLL=true
 REMOTE=cfengine
 BRANCH=master
 
-while [[ $# > 1 ]]
+while [[ $# > 0 ]]
 do
   case "$1" in
     --no-jekyll)
-      RUN_JEKYLL = false
+      RUN_JEKYLL=false
+      RUN_SERVER=false
       ;;
 
     --no-server)
-      RUN_SERVER = false
+      RUN_SERVER=false
       ;;
 
     --remote|-r)
