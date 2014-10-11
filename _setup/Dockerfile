@@ -70,7 +70,7 @@ RUN ["/bin/bash", "-c", " \
 WORKDIR /workdir
 RUN ["/bin/bash", "-c", " \
     git clone -b $DOC_BRANCH http://github.com/$GIT_REMOTE/documentation && \
-    git clone -b $DOC_BRANCH http://github.com/$GIT_REMOTE/documentation-generator && \
+    git clone -b dockerfile http://github.com/vohi/documentation-generator && \
     git clone -b $CORE_BRANCH http://github.com/$GIT_REMOTE/masterfiles && \
     git clone -b $CORE_BRANCH http://github.com/$GIT_REMOTE/design-center \
     "]
@@ -89,12 +89,4 @@ RUN ["/bin/bash", "-c", " \
 # Instruct derived images to process documentation
 ONBUILD WORKDIR /workdir
 ONBUILD EXPOSE 8080
-ONBUILD CMD \
-    sh -c 'for i in *; do cd $i; git pull; cd ..; done' && \
-    cd documentation-generator && \
-    sed -e "s/  display_path/# display_path/" -i _config.yml && \
-    _scripts/cfdoc_bootstrap.py && \
-    ./_regenerate_json.sh && \
-    _scripts/cfdoc_preprocess.py && \
-    sh -c 'mkdir pages && cp -r $WRKDIR/documentation/* $WRKDIR/documentation-generator/pages' && \
-    jekyll --server 8080
+ONBUILD ENTRYPOINT ["documentation-generator/_setup/_rebuild.sh"]
