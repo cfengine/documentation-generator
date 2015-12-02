@@ -18,7 +18,9 @@ CFE_DIR: _site
 #to create correct links in sitemap
 CFE_manuals_version: 3.7
 cfengine:
-  branch: 3.7
+  branch: "3.7"
+  latest_patch_release: "2"
+  latest_package_build: "1"
 
 paginate: 500
 
