@@ -1,7 +1,7 @@
 //google search
 (function() {
     
-    var cx = '013522560145330013240:skcdq5u4lcc';
+    var cx = '013522560145330013240:dltrs-ywi9q';
     var gcse = document.createElement('script');
     gcse.type = 'text/javascript';
     gcse.async = true;
