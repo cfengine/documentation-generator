@@ -20,8 +20,14 @@ CFE_DIR: _site
 CFE_manuals_version: 3.8
 cfengine:
   branch: 3.8
-  latest_patch_release: "1"
+  latest_patch_release: "2"
   latest_package_build: 1
+
+vagrant:
+  version: "1.7.4"
+
+virtualbox:
+  version: "5.0.16"
 
 paginate: 500
 
