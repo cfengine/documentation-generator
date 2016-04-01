@@ -19,7 +19,7 @@ CFE_DIR: _site
 CFE_manuals_version: 3.7
 cfengine:
   branch: "3.7"
-  latest_patch_release: "2"
+  latest_patch_release: "3"
   latest_package_build: "1"
 
 paginate: 500
