@@ -1,7 +1,7 @@
 //google search
 (function() {
     
-    var cx = '{{site.cfengine.custom_search_engine}}';
+    var cx = '012826289311752768906:eahkid3txr8';
     var gcse = document.createElement('script');
     gcse.type = 'text/javascript';
     gcse.async = true;
