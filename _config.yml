@@ -19,8 +19,8 @@ CFE_DIR: _site
 CFE_manuals_version: 3.9
 cfengine:
   branch: 3.9.x
-  latest_patch_release: NA
-  latest_package_build: NA
+  latest_patch_release: "0b1"
+  latest_package_build: "1"
 
 vagrant:
   version: "1.7.4"
