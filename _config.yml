@@ -19,14 +19,14 @@ CFE_DIR: _site
 CFE_manuals_version: 3.7
 cfengine:
   branch: "3.7"
-  latest_patch_release: "3"
+  latest_patch_release: "4"
   latest_package_build: "1"
 
 vagrant:
   version: "1.7.4"
 
 virtualbox:
-  version: "5.0.16"
+  version: "5.0.26"
 
 paginate: 500
 
