@@ -21,6 +21,7 @@ cfengine:
   branch: "3.10"
   latest_patch_release: "0b1"
   latest_package_build: "1"
+  masterfiles_branch: "3.10.x"
 
 vagrant:
   version: "1.7.4"
