@@ -16,7 +16,7 @@ CFE_OUTPUT: true
 #CFE_DIR - output folder if CFE_OUTPUT turned on
 CFE_DIR: _site
 #to create correct links in sitemap
-CFE_manuals_version: 3.10 
+CFE_manuals_version: "3.10"
 cfengine:
   branch: "3.10"
   latest_patch_release: "0b1"
