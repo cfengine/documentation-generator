@@ -1,8 +1,6 @@
 #!/bin/bash
 
 VERSION=$1
-SERVER=$2
-PORT=$3
 
 if [ -z "$WRKDIR" ]
 then
@@ -18,7 +16,13 @@ if [  ! -d documentation-generator/_site ]; then
   exit 1
 fi
 
-rsync -zvr -e "ssh -p $PORT" documentation-generator/_site/ $SERVER/$VERSION 
+OUTPUT=$WRKDIR/output
+mkdir -p $OUTPUT
+
+# Pack the site for transfer (its faster to transfer one big file than thousands of small ones)
+# This archive is expected to be unpacked by the build system after the artifacts have been moved to their storage location
+tar -czvf $OUTPUT/packed-for-shipping.tar.gz -C documentation-generator _site
+#cp -a documentation-generator/_site $OUTPUT
 
 ARCHIVE_FILE=cfengine-documentation-$VERSION
 echo "Creating $ARCHIVE_FILE..."
@@ -34,5 +38,6 @@ do
   sed -i "s/<\/form>/<\/form -->/" $source
 done
 cd ..
-tar -czf $ARCHIVE_FILE.tar.gz _site
-scp -P $PORT $ARCHIVE_FILE.tar.gz $SERVER/$VERSION 
+tar -czf $OUTPUT/$ARCHIVE_FILE.tar.gz _site
+
+ls -al $OUTPUT
