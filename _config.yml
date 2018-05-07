@@ -19,20 +19,20 @@ CFE_DIR: _site
 CFE_manuals_version: master
 cfengine:
   branch: master
-  core_branch: "master"
-  latest_patch_release: NA
-  latest_package_build: NA
-  masterfiles_branch: "master"
+  core_branch: "3.12"
+  latest_patch_release: "3.12" 
+  latest_package_build: "0b1"
+  masterfiles_branch: "3.12"
 
 Template:
   parse:
     line_numbers: true
 
 vagrant:
-  version: "1.7.4"
+  version: "2.0.0"
 
 virtualbox:
-  version: "5.0.16"
+  version: "5.2.10"
 
 paginate: 500
 
