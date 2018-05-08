@@ -16,9 +16,9 @@ CFE_OUTPUT: true
 #CFE_DIR - output folder if CFE_OUTPUT turned on
 CFE_DIR: _site
 #to create correct links in sitemap
-CFE_manuals_version: master
+CFE_manuals_version: 3.12
 cfengine:
-  branch: master
+  branch: 3.12
   core_branch: "3.12"
   latest_patch_release: "3.12" 
   latest_package_build: "0b1"
@@ -44,5 +44,5 @@ asset_pipeline:
   bundle: true            # Default = true
   compress: true          # Default = true
   output_path: assets     # Default = assets
-  display_path: docs/master/assets       # Default = nil
+  display_path: docs/3.12/assets       # Default = nil
   gzip: false             # Default = false
