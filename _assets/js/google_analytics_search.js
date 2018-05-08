@@ -1,17 +1,13 @@
 //google search
 (function() {
-    
-    var cx = '013522560145330013240:skcdq5u4lcc';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-        '//www.google.com/cse/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-
+        var cx = '013522560145330013240:skcdq5u4lcc';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
 })();
-
 //google analytics
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-2576171-2']);
