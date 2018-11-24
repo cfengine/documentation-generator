@@ -25,7 +25,7 @@ DIR=$WRKDIR/documentation-generator/_site
 DIR2=$WRKDIR/documentation-generator/_site/pdf
 
 #git branch
-CUR_BRANCH='master'
+CUR_BRANCH='3.13'
 
 LOCAL_WEBROOT=/var/www/docs/$CUR_BRANCH
 

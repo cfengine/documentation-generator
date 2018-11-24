@@ -9,7 +9,7 @@ NO_CONFIGURE=1 ./autogen.sh
 
 cd $WRKDIR
 
-$WRKDIR/documentation-generator/_scripts/cfdoc_bootstrap.py master
+$WRKDIR/documentation-generator/_scripts/cfdoc_bootstrap.py 3.13
 
 # Prepare core for syntax docs
 cd /northern.tech/cfengine/core
@@ -33,4 +33,4 @@ bash -x ./_scripts/_run_jekyll.sh master
 
 #strip leading slash from assets
 #in the _site directory
-find ./_site/ -name "*.html" | xargs sed -i "s|/docs/master/||g"
+find ./_site/ -name "*.html" | xargs sed -i "s|/docs/3.13/||g"
