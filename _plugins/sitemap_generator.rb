@@ -158,16 +158,17 @@ module Jekyll
       last_modified_date = nil
       site.posts.each do |post|
 
-        if !excluded?(post.name)
-          path = page.full_path_to_source
-          if File.exists?(path)
-            url = fill_url(site, page)
-            urlset.add_element(url)
-            date = File.mtime(path)
-            last_modified_date = date if last_modified_date == nil or date > last_modified_date
+        if "#{page.data['published']}" == 'true'
+          if !excluded?(post.name)
+            path = page.full_path_to_source
+            if File.exists?(path)
+              url = fill_url(site, page)
+              urlset.add_element(url)
+              date = File.mtime(path)
+              last_modified_date = date if last_modified_date == nil or date > last_modified_date
+            end
           end
         end
-
       end
       last_modified_date
     end
@@ -178,12 +179,13 @@ module Jekyll
     # Returns last_modified_date of index page
     def fill_pages(site, urlset)
       site.pages.each do |page|
-        if !excluded?(page.name)
-          path = page.full_path_to_source
-          
-          if File.exists?(path)
-            url = fill_url(site, page)
-            urlset.add_element(url)
+        if "#{page.data['published']}" == 'true'
+          if !excluded?(page.name)
+            path = page.full_path_to_source
+            if File.exists?(path)
+              url = fill_url(site, page)
+              urlset.add_element(url)
+            end
           end
         end
       end
