@@ -237,9 +237,11 @@ module Jekyll
     #
     # Returns the location of the page or post
     def fill_location(page_or_post)
-      loc = REXML::Element.new "loc"
-      loc.text = page_or_post.CFE_location_on_server(page_or_post)
-      loc
+      if "#{page_or_post.data['published']}" == 'true'
+        loc = REXML::Element.new "loc"
+        loc.text = page_or_post.CFE_location_on_server(page_or_post)
+        loc
+      end
     end
 
     # Fill lastmod XML element with the last modified date for the page or post.
