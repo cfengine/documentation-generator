@@ -244,23 +244,26 @@ module Jekyll
     #
     # Returns lastmod REXML::Element or nil
     def fill_last_modified(site, page_or_post)
-      path = page_or_post.full_path_to_source
 
-      lastmod = REXML::Element.new "lastmod"
-      date = File.mtime(path)
-      latest_date = find_latest_date(date, site, page_or_post)
+      if "#{page_or_post.data['published']}" == 'true'
+        path = page_or_post.full_path_to_source
 
-      if @last_modified_post_date == nil
-        # This is a post
-        lastmod.text = latest_date.iso8601
-      else
-        # This is a page
-        if posts_included?(page_or_post.name)
-          # We want to take into account the last post date
-          final_date = greater_date(latest_date, @last_modified_post_date)
-          lastmod.text = final_date.iso8601
-        else
+        lastmod = REXML::Element.new "lastmod"
+        date = File.mtime(path)
+        latest_date = find_latest_date(date, site, page_or_post)
+
+        if @last_modified_post_date == nil
+          # This is a post
           lastmod.text = latest_date.iso8601
+        else
+          # This is a page
+          if posts_included?(page_or_post.name)
+            # We want to take into account the last post date
+            final_date = greater_date(latest_date, @last_modified_post_date)
+            lastmod.text = final_date.iso8601
+          else
+            lastmod.text = latest_date.iso8601
+          end
         end
       end
       lastmod
