@@ -158,7 +158,7 @@ module Jekyll
       last_modified_date = nil
       site.posts.each do |post|
 
-        if "#{page.data['published']}" == 'true'
+        if "#{post.data['published']}" == 'true'
           if !excluded?(post.name)
             path = page.full_path_to_source
             if File.exists?(path)
