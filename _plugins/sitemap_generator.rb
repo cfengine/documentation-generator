@@ -157,19 +157,18 @@ module Jekyll
     def fill_posts(site, urlset)
       last_modified_date = nil
       site.posts.each do |post|
+
         if !excluded?(post.name)
           path = page.full_path_to_source
           if File.exists?(path)
             url = fill_url(site, page)
             urlset.add_element(url)
+            date = File.mtime(path)
+            last_modified_date = date if last_modified_date == nil or date > last_modified_date
           end
         end
 
-        path = post.full_path_to_source
-        date = File.mtime(path)
-        last_modified_date = date if last_modified_date == nil or date > last_modified_date
       end
-
       last_modified_date
     end
 
