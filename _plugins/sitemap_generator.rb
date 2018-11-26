@@ -196,8 +196,9 @@ module Jekyll
     #
     # Returns url REXML::Element
     def fill_url(site, page_or_post)
+      url = REXML::Element.new "url"
+
       if "#{page_or_post.data['published']}" == 'true'
-        url = REXML::Element.new "url"
 
         loc = fill_location(page_or_post)
         url.add_element(loc)
@@ -228,9 +229,8 @@ module Jekyll
             puts "ERROR: Invalid Priority In #{page_or_post.name}"
           end
         end
-        url
       end
-      nil
+      url
     end
 
     # Get URL location of page or post
