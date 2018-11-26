@@ -196,39 +196,40 @@ module Jekyll
     #
     # Returns url REXML::Element
     def fill_url(site, page_or_post)
-      url = REXML::Element.new "url"
+      if "#{page.data['published']}" == 'true'
+        url = REXML::Element.new "url"
 
-      loc = fill_location(page_or_post)
-      url.add_element(loc)
+        loc = fill_location(page_or_post)
+        url.add_element(loc)
 
-      lastmod = fill_last_modified(site, page_or_post)
-      url.add_element(lastmod) if lastmod
+        lastmod = fill_last_modified(site, page_or_post)
+        url.add_element(lastmod) if lastmod
 
-      if (page_or_post.data[CHANGE_FREQUENCY_CUSTOM_VARIABLE_NAME])
-        change_frequency =
-          page_or_post.data[CHANGE_FREQUENCY_CUSTOM_VARIABLE_NAME].downcase
+        if (page_or_post.data[CHANGE_FREQUENCY_CUSTOM_VARIABLE_NAME])
+          change_frequency =
+            page_or_post.data[CHANGE_FREQUENCY_CUSTOM_VARIABLE_NAME].downcase
 
-        if (valid_change_frequency?(change_frequency))
-          changefreq = REXML::Element.new "changefreq"
-          changefreq.text = change_frequency
-          url.add_element(changefreq)
-        else
-          puts "ERROR: Invalid Change Frequency In #{page_or_post.name}"
+          if (valid_change_frequency?(change_frequency))
+            changefreq = REXML::Element.new "changefreq"
+            changefreq.text = change_frequency
+            url.add_element(changefreq)
+          else
+            puts "ERROR: Invalid Change Frequency In #{page_or_post.name}"
+          end
         end
-      end
 
-      if (page_or_post.data[PRIORITY_CUSTOM_VARIABLE_NAME])
-        priority_value = page_or_post.data[PRIORITY_CUSTOM_VARIABLE_NAME]
-        if valid_priority?(priority_value)
-          priority = REXML::Element.new "priority"
-          priority.text = page_or_post.data[PRIORITY_CUSTOM_VARIABLE_NAME]
-          url.add_element(priority)
-        else
-          puts "ERROR: Invalid Priority In #{page_or_post.name}"
+        if (page_or_post.data[PRIORITY_CUSTOM_VARIABLE_NAME])
+          priority_value = page_or_post.data[PRIORITY_CUSTOM_VARIABLE_NAME]
+          if valid_priority?(priority_value)
+            priority = REXML::Element.new "priority"
+            priority.text = page_or_post.data[PRIORITY_CUSTOM_VARIABLE_NAME]
+            url.add_element(priority)
+          else
+            puts "ERROR: Invalid Priority In #{page_or_post.name}"
+          end
         end
+        url
       end
-
-      url
     end
 
     # Get URL location of page or post
@@ -244,7 +245,6 @@ module Jekyll
     #
     # Returns lastmod REXML::Element or nil
     def fill_last_modified(site, page_or_post)
-
       if "#{page_or_post.data['published']}" == 'true'
         path = page_or_post.full_path_to_source
 
@@ -265,8 +265,8 @@ module Jekyll
             lastmod.text = latest_date.iso8601
           end
         end
+        lastmod
       end
-      lastmod
     end
 
     # Go through the page/post and any implemented layouts and get the latest
