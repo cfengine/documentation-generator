@@ -198,36 +198,38 @@ module Jekyll
     def fill_url(site, page_or_post)
       url = REXML::Element.new "url"
 
-      loc = fill_location(page_or_post)
-      url.add_element(loc)
+      if "#{page_or_post.data['published']}" == 'true'
 
-      lastmod = fill_last_modified(site, page_or_post)
-      url.add_element(lastmod) if lastmod
+        loc = fill_location(page_or_post)
+        url.add_element(loc)
 
-      if (page_or_post.data[CHANGE_FREQUENCY_CUSTOM_VARIABLE_NAME])
-        change_frequency =
-          page_or_post.data[CHANGE_FREQUENCY_CUSTOM_VARIABLE_NAME].downcase
+        lastmod = fill_last_modified(site, page_or_post)
+        url.add_element(lastmod) if lastmod
 
-        if (valid_change_frequency?(change_frequency))
-          changefreq = REXML::Element.new "changefreq"
-          changefreq.text = change_frequency
-          url.add_element(changefreq)
-        else
-          puts "ERROR: Invalid Change Frequency In #{page_or_post.name}"
+        if (page_or_post.data[CHANGE_FREQUENCY_CUSTOM_VARIABLE_NAME])
+          change_frequency =
+            page_or_post.data[CHANGE_FREQUENCY_CUSTOM_VARIABLE_NAME].downcase
+
+          if (valid_change_frequency?(change_frequency))
+            changefreq = REXML::Element.new "changefreq"
+            changefreq.text = change_frequency
+            url.add_element(changefreq)
+          else
+            puts "ERROR: Invalid Change Frequency In #{page_or_post.name}"
+          end
+        end
+
+        if (page_or_post.data[PRIORITY_CUSTOM_VARIABLE_NAME])
+          priority_value = page_or_post.data[PRIORITY_CUSTOM_VARIABLE_NAME]
+          if valid_priority?(priority_value)
+            priority = REXML::Element.new "priority"
+            priority.text = page_or_post.data[PRIORITY_CUSTOM_VARIABLE_NAME]
+            url.add_element(priority)
+          else
+            puts "ERROR: Invalid Priority In #{page_or_post.name}"
+          end
         end
       end
-
-      if (page_or_post.data[PRIORITY_CUSTOM_VARIABLE_NAME])
-        priority_value = page_or_post.data[PRIORITY_CUSTOM_VARIABLE_NAME]
-        if valid_priority?(priority_value)
-          priority = REXML::Element.new "priority"
-          priority.text = page_or_post.data[PRIORITY_CUSTOM_VARIABLE_NAME]
-          url.add_element(priority)
-        else
-          puts "ERROR: Invalid Priority In #{page_or_post.name}"
-        end
-      end
-
       url
     end
 
