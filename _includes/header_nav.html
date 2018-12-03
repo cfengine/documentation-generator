@@ -33,12 +33,20 @@
                                    if(location.pathname.indexOf(branch.Link)==0){
                                        // this is version that we're currently looking at
                                        selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
                                    }
                                    str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
                                }
                                document.querySelector('#top_version_wrapper select').innerHTML = str;
                            }
                            xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
                        };
                        document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
                    </script>
