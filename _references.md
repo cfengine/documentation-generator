@@ -41,3 +41,4 @@
 [body classes]: reference-promise-types.html#classes
 [body common]: reference-components.html#common-control
 [body file]: guide-language-concepts-namespaces.html
+[sys.uqhost]: reference-special-variables-sys.html#sys-uqhost
