@@ -21,7 +21,7 @@ cfengine:
   branch: 3.12
   core_branch: "3.12"
   latest_patch_release: "2"
-  latest_package_build: "1"
+  latest_package_build: "2"
   masterfiles_branch: "3.12"
 
 Template:
