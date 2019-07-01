@@ -18,11 +18,11 @@ CFE_DIR: _site
 #to create correct links in sitemap
 CFE_manuals_version: master
 cfengine:
-  branch: master
-  core_branch: "master"
-  latest_patch_release: NA
-  latest_package_build: NA
-  masterfiles_branch: "master"
+  branch: 3.14 
+  core_branch: "3.14"
+  latest_patch_release: 0 
+  latest_package_build: 1
+  masterfiles_branch: "3.14"
 
 Template:
   parse:
