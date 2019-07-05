@@ -2,7 +2,7 @@
 safe: false
 #include: ./pages/
 plugins: ./_plugins/
-# baseurl: /docs/master/
+# baseurl: /docs/3.14/
 git-repository: github.com/cfengine/documentation
 #source:      ./pages/
 #destination:
@@ -18,11 +18,11 @@ CFE_DIR: _site
 #to create correct links in sitemap
 CFE_manuals_version: 3.14
 cfengine:
-  branch: 3.14 
-  core_branch: "3.14"
   latest_patch_release: 0 
   latest_package_build: 1
-  masterfiles_branch: "3.14"
+  branch: 3.14.0
+  core_branch: "3.14.0"
+  masterfiles_branch: "3.14.0"
 
 Template:
   parse:
@@ -44,5 +44,5 @@ asset_pipeline:
   bundle: true            # Default = true
   compress: true          # Default = true
   output_path: assets     # Default = assets
-  display_path: docs/master/assets       # Default = nil
+  display_path: docs/3.14/assets       # Default = nil
   gzip: false             # Default = false
