@@ -20,7 +20,7 @@ CFE_manuals_version: 3.12
 cfengine:
   branch: 3.12
   core_branch: "3.12"
-  latest_patch_release: "3"
+  latest_patch_release: "4"
   latest_package_build: "1"
   masterfiles_branch: "3.12"
 
