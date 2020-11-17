@@ -24,36 +24,33 @@ DIR=$WRKDIR/documentation-generator/_site
 #output pdf folder
 DIR2=$WRKDIR/documentation-generator/_site/pdf
 
-#git branch
-CUR_BRANCH='master'
+#git branch always passed as $BRANCH argument
 
-LOCAL_WEBROOT=/var/www/docs/$CUR_BRANCH
+# Note: LOCAL_WEBROOT must NOT end with /
+LOCAL_WEBROOT=$WRKDIR/www/docs/$BRANCH
 
-LOCAL_WEBSERVER_URL='http://localhost/docs'
+LOCAL_WEBSERVER_URL="http://localhost:8000/docs/$BRANCH"
 
-if [ "$LOCAL_WEBROOT" ]; then
- sudo mkdir -p $LOCAL_WEBROOT || true
-fi
+set -x
 
-# copy _site to the local webroot
-sudo rm -R $LOCAL_WEBROOT/*
-sudo cp -R $DIR/* $LOCAL_WEBROOT/
-
+# make a website
+rm -Rf $LOCAL_WEBROOT
+mkdir -p ${LOCAL_WEBROOT%/*}
+cp -R $DIR $LOCAL_WEBROOT
+( cd $WRKDIR/www && python -m SimpleHTTPServer) &
 
 #get all files and remove / and .html from filename
-FILENAME=`find $DIR -type f -name *.html | awk -F $DIR '{print $2}' |  cut -d "/" -f 2 | cut -d . -f 1`
+FILENAME=`find $DIR -type f -name *-printable.html | awk -F $DIR '{print $2}' |  cut -d "/" -f 2 | cut -d . -f 1`
 
 if [ "$DIR2" ]; then
  mkdir -p $DIR2 || true
 fi
 
-# do not create PDF for tags or TODO printable-reference
 for i in $FILENAME; do
-    if [ $i != "tags" ] && [ $i != "printable-reference" ]
-    then
-        echo '\n' $i '\n'
-        weasyprint $LOCAL_WEBSERVER_URL/$CUR_BRANCH/$i.html $DIR2/$i.pdf || true
-    fi
+    echo '\n' $i '\n'
+    wkhtmltopdf $LOCAL_WEBSERVER_URL/$i.html $DIR2/$i.pdf || true
 done
+
+kill %1
 
 echo "PDF generation finished"

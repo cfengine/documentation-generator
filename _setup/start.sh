@@ -43,26 +43,3 @@ gem install uglifier
 gem install execjs
 gem install sanitize
 
-
-#install weasyprint for PDF generation (http://weasyprint.org/)
-
-sudo apt-get install python-dev python-pip python-lxml libgtk2.0-0 libffi-dev --fix-missing
-sudo apt-get install python-virtualenv
-
-sudo pip install --upgrade setuptools
-
-cd /tmp
-curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py
-
-sudo python get-pip.py
-sudo pip install WeasyPrint
-
-#test
-weasyprint http://www.w3.org/TR/CSS21/intro.html CSS21-intro.pdf -s http://weasyprint.org/samples/CSS21-print.css
-
-
-#apache2
-sudo apt-get update
-sudo apt-get install apache2
-
-#Configure webroot if needed
