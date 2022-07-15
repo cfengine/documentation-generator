@@ -60,3 +60,4 @@
 [mpf-classification-bundles]: reference-masterfiles-policy-framework.html#classification-bundles-before-autorun.html
 [mpf-services-autorun]: reference-masterfiles-policy-framework-services-autorun.html
 [package-modules-the-api]: reference-language-concepts-modules-package-modules.html#the-api
+[Promise Types#meta]: https://docs.cfengine.com/docs/master/reference-promise-types.html#meta
