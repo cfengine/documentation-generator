@@ -1,0 +1,1 @@
+../../documentation/generator/build/latest_nightly.sh
