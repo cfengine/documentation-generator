@@ -1,5 +1,7 @@
 #+Title: CFEngine Documentation System
 
+*Note:* This repository was merged into the =generator=  sub-directory of the [[https://github.com/cfengine/documentation][documentation repository]] on [2022-08-16 Tue]. It is archived and should not be used.
+
 * Writing Documentation
 :PROPERTIES:
 :ID:       ce6c1ae3-7302-4e56-a409-1b4440dc8aad
